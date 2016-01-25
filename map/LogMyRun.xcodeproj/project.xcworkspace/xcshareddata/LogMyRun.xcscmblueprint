@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F5831C2771096B7992691E72B5C23DFE593C26F0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F5831C2771096B7992691E72B5C23DFE593C26F0" : 0,
+    "6470AC711749183A8D987C8BEFEAE845D50C4F0E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9F5BB32E-253F-4723-8910-93C74E17E5D6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F5831C2771096B7992691E72B5C23DFE593C26F0" : "FrontEnd\/",
+    "6470AC711749183A8D987C8BEFEAE845D50C4F0E" : "Facebook-Integration\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LogMyRun",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "map\/LogMyRun.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/BloomsdayRun\/Facebook-Integration.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6470AC711749183A8D987C8BEFEAE845D50C4F0E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ksanderson\/FrontEnd.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F5831C2771096B7992691E72B5C23DFE593C26F0"
+    }
+  ]
+}
