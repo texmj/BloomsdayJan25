@@ -38,16 +38,16 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
         {
             // User is already logged in, do work such as go to next view controller.
             print(FBSDKAccessToken.currentAccessToken())
-            //returnUserData()
+            returnUserData()
         }
         else
-        {/*
+        {
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-            */
+            
             //returnUserData()
         }
     }
@@ -86,6 +86,9 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func returnUserData()
     {
+        let runner = UserInformation.sharedInstance
+        print(runner.name)
+        /* SP: This works!
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
@@ -103,6 +106,7 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print("User Email is: \(userEmail)")
             }
         })
+        */
     }
 
 

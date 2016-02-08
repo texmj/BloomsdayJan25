@@ -40,6 +40,10 @@
 		C2ED7D2C1B5A97E8003E9A81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2ED7D2A1B5A97E8003E9A81 /* LaunchScreen.storyboard */; };
 		C2ED7D371B5A97E8003E9A81 /* LogMyRunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ED7D361B5A97E8003E9A81 /* LogMyRunTests.swift */; };
 		C2ED7D421B5A97E8003E9A81 /* LogMyRunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ED7D411B5A97E8003E9A81 /* LogMyRunUITests.swift */; };
+		CB5D6CCB1C5AA6EA001C13EC /* PostRunController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CCA1C5AA6EA001C13EC /* PostRunController.swift */; };
+		CB5D6CCF1C5F4B17001C13EC /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CCE1C5F4B17001C13EC /* UserInformation.swift */; };
+		CB5D6CD11C601057001C13EC /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CD01C601057001C13EC /* FriendsTableViewController.swift */; };
+		CB5D6CD51C63D4DB001C13EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,10 @@
 		C2ED7D3D1B5A97E8003E9A81 /* LogMyRunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogMyRunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2ED7D411B5A97E8003E9A81 /* LogMyRunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMyRunUITests.swift; sourceTree = "<group>"; };
 		C2ED7D431B5A97E8003E9A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB5D6CCA1C5AA6EA001C13EC /* PostRunController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRunController.swift; sourceTree = "<group>"; };
+		CB5D6CCE1C5F4B17001C13EC /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		CB5D6CD01C601057001C13EC /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,7 @@
 		C20EA5591B5ACD7800B3A820 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB5D6CCE1C5F4B17001C13EC /* UserInformation.swift */,
 				C272EFD41B5ACEE7001A4375 /* Run+CoreDataProperties.swift */,
 				C272EFD51B5ACEE7001A4375 /* Run.swift */,
 				C272EFD61B5ACEE7001A4375 /* Location+CoreDataProperties.swift */,
@@ -169,6 +178,9 @@
 				C20EA5551B5AB5A100B3A820 /* IBNewRunViewController.swift */,
 				C20EA5571B5AB66000B3A820 /* IBRunDetailViewController.swift */,
 				C23D616D1B5BFBB00018C89A /* IBMulticolorPolylineSegment.swift */,
+				CB5D6CCA1C5AA6EA001C13EC /* PostRunController.swift */,
+				CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */,
+				CB5D6CD01C601057001C13EC /* FriendsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -390,12 +402,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF39F0B21C116BA000D7FB3E /* FBViewController.swift in Sources */,
+				CB5D6CCF1C5F4B17001C13EC /* UserInformation.swift in Sources */,
+				CB5D6CD11C601057001C13EC /* FriendsTableViewController.swift in Sources */,
 				C23D616E1B5BFBB00018C89A /* IBMulticolorPolylineSegment.swift in Sources */,
 				C272EFDC1B5ACEE7001A4375 /* Location+CoreDataProperties.swift in Sources */,
+				CB5D6CD51C63D4DB001C13EC /* HomeViewController.swift in Sources */,
 				C20EA5561B5AB5A100B3A820 /* IBNewRunViewController.swift in Sources */,
 				C20EA5581B5AB66000B3A820 /* IBRunDetailViewController.swift in Sources */,
 				C272EFDE1B5ACEE7001A4375 /* Location.swift in Sources */,
 				C272EFD81B5ACEE7001A4375 /* Run+CoreDataProperties.swift in Sources */,
+				CB5D6CCB1C5AA6EA001C13EC /* PostRunController.swift in Sources */,
 				C2ED7D271B5A97E8003E9A81 /* LogMyRun.xcdatamodeld in Sources */,
 				C272EFDA1B5ACEE7001A4375 /* Run.swift in Sources */,
 				C2ED7D1F1B5A97E8003E9A81 /* AppDelegate.swift in Sources */,
