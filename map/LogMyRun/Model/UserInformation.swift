@@ -17,6 +17,7 @@ public class UserInformation {
     var friends : NSDictionary
     var friendNames : [String]
     var friendIDs : [String]
+    var userIDsArray : [String] //Array of all userIDs. First one will be User, rest will be friends. if want num in future use UInt64?
     var accesstoken : NSString
     var currentPersonTrackingByIndex : Int //0 is self
     var isUserBeingTrackedArray : [Bool]
@@ -31,6 +32,7 @@ public class UserInformation {
         self.accesstoken = "test"
         self.currentPersonTrackingByIndex = 0 //0 is self
         self.isUserBeingTrackedArray = [Bool]()
+        self.userIDsArray = [String]()
         //self.picture = UIImage(named: "afternoon")!
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -60,6 +62,7 @@ public class UserInformation {
                 self.friends = result.valueForKey("friends") as! NSDictionary
                 print("FRIENDS")
                 self.isUserBeingTrackedArray.append(true)
+                self.userIDsArray.append(self.token as String)
                 ///print(self.friends)
                 let data : NSArray = self.friends.objectForKey("data") as! NSArray
                 print(data.count)
@@ -70,6 +73,7 @@ public class UserInformation {
                     self.friendNames.append(name)
                     self.friendIDs.append(id)
                     self.isUserBeingTrackedArray.append(false)
+                    self.userIDsArray.append(id)
                     print("the id value is \(id) for \(name)")
                 }
                 
