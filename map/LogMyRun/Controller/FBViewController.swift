@@ -39,6 +39,7 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
             // User is already logged in, do work such as go to next view controller.
             print(FBSDKAccessToken.currentAccessToken())
             returnUserData()
+            
         }
         else
         {
@@ -87,7 +88,7 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
     func returnUserData()
     {
         let runner = UserInformation.sharedInstance
-        print(runner.name)
+        print(runner.name)  
         /* SP: This works!
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in

@@ -19,6 +19,7 @@ class HomeViewController : UIViewController{
     
     
     override func viewDidLoad() {
+        FacebookImages.sharedInstance
         /*
        
         let userCalendar = NSCalendar.currentCalendar()

@@ -18,6 +18,8 @@ public class UserInformation {
     var friendNames : [String]
     var friendIDs : [String]
     var accesstoken : NSString
+    var currentPersonTrackingByIndex : Int //0 is self
+    var isUserBeingTrackedArray : [Bool]
     ///This prevents others from using the default '()' initializer for this class.
     private init()
     {
@@ -27,6 +29,8 @@ public class UserInformation {
         self.friendNames = [String]()
         self.friendIDs = [String]()
         self.accesstoken = "test"
+        self.currentPersonTrackingByIndex = 0 //0 is self
+        self.isUserBeingTrackedArray = [Bool]()
         //self.picture = UIImage(named: "afternoon")!
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -55,6 +59,7 @@ public class UserInformation {
                 print(self.accesstoken)
                 self.friends = result.valueForKey("friends") as! NSDictionary
                 print("FRIENDS")
+                self.isUserBeingTrackedArray.append(true)
                 ///print(self.friends)
                 let data : NSArray = self.friends.objectForKey("data") as! NSArray
                 print(data.count)
@@ -64,10 +69,15 @@ public class UserInformation {
                     let name = valueDict.objectForKey("name") as! String
                     self.friendNames.append(name)
                     self.friendIDs.append(id)
+                    self.isUserBeingTrackedArray.append(false)
                     print("the id value is \(id) for \(name)")
                 }
                 
+                /*print("Us", self.name, "being tracked? ", self.isUserBeingTrackedArray[0])
                
+                for i in 1...self.friends.count {
+                    print("IS", self.friends[i], "being tracked? ", self.isUserBeingTrackedArray[i])
+                }*/
                 
                 let facebookID = self.token
                 let task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")!) { data, response, error in
@@ -82,9 +92,20 @@ public class UserInformation {
                 
                 //let userEmail : NSString = result.valueForKey("email") as! NSString
                 //print("User Email is: \(userEmail)")
+                
             }
         })
         
+        
+    }
+    
+    func checkWhoIsBeingTracked(personBeingTracked : Int) -> NSString{
+        if(personBeingTracked == 0) {
+            return name
+        }else
+        {
+            return friendNames[personBeingTracked-1]
+        }
         
     }
     func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {

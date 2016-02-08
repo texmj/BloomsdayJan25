@@ -153,93 +153,16 @@ class IBNewRunViewController: UIViewController {
         
     }
     
-    func sendDistanceInformationToServer( lat: Double, lon: Double)
-    {
-        // SPRATA THIS IS A GOOD GET REQUEST. IT WORKS. DO NOT DELETE
-        /*let headers = [
-            "access-token": UserInformation.sharedInstance.accesstoken as String
-        ]
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?id=\(UserInformation.sharedInstance.token)")!,
-            cachePolicy: .UseProtocolCachePolicy,
-            timeoutInterval: 10.0)
-        request.HTTPMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        
-        let session = NSURLSession.sharedSession()
-        let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error)
-            } else {
-                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-            }
-        })
-        
-        dataTask.resume()
-        */
-        
-        // SPRATA THIS IS A GOOD POST REQUEST. IT WORKS. DO NOT DELETE
-        let postHeaders = [
-            "access-token": UserInformation.sharedInstance.accesstoken as String,
-        ]
-        
-        let request2 = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?latitude=\(lat)&longitude=\(lon)&timestamp=99999&id=\(UserInformation.sharedInstance.token)")!,
-            cachePolicy: .UseProtocolCachePolicy,
-            timeoutInterval: 10.0)
-        request2.HTTPMethod = "POST"
-        request2.allHTTPHeaderFields = postHeaders
-        
-        let session2 = NSURLSession.sharedSession()
-        let dataTask2 = session2.dataTaskWithRequest(request2, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error)
-            } else {
-                //let httpResponse = response as? NSHTTPURLResponse
-                //print(httpResponse)
-                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-            }
-        })
-        
-        dataTask2.resume()
-        
-    }
-    
-    
-    func sendDistanceInformationToServerWithUserID( lat: Double, lon: Double, fbUserID: Int)
-    {
-        let postHeaders = [
-            "access-token": UserInformation.sharedInstance.accesstoken as String,
-        ]
-        
-        let request2 = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?latitude=\(lat)&longitude=\(lon)&timestamp=99999&id=\(fbUserID)")!,
-            cachePolicy: .UseProtocolCachePolicy,
-            timeoutInterval: 10.0)
-        request2.HTTPMethod = "POST"
-        request2.allHTTPHeaderFields = postHeaders
-        
-        let session2 = NSURLSession.sharedSession()
-        let dataTask2 = session2.dataTaskWithRequest(request2, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error)
-            } else {
-                //let httpResponse = response as? NSHTTPURLResponse
-                //print(httpResponse)
-                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-            }
-        })
-        
-        dataTask2.resume()
-        
-    }
-    
     
      // MARK: - Start log the run
     //TODO implement flag to check if first coordinate (so it doesn't grab random val from DB)
     //TODO Stop the app from calling this function when saving the run
+    //SPRATA: Added 2 new functions (for get and post calls) that work based on the userID
+    //         need to implement them when we have a better handle on testing runners
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for location in locations as [CLLocation] {
             let howRecent = location.timestamp.timeIntervalSinceNow
-            
+            print("Current Person Being Tracked is: ", UserInformation.sharedInstance.checkWhoIsBeingTracked(UserInformation.sharedInstance.currentPersonTrackingByIndex))
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
                 //Update distance
                 if self.locations.count > 0
@@ -300,6 +223,189 @@ class IBNewRunViewController: UIViewController {
             }
         }
     }
+    
+    //Temp method/proof of concept for tracking multiple people around a course for bloomsday section of app!
+    func locationManager2(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        for location in locations as [CLLocation] {
+            let howRecent = location.timestamp.timeIntervalSinceNow
+            print("Current Person Being Tracked is: ", UserInformation.sharedInstance.checkWhoIsBeingTracked(UserInformation.sharedInstance.currentPersonTrackingByIndex))
+            if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
+                //Update distance
+                if self.locations.count > 0
+                {
+                    distance += location.distanceFromLocation(self.locations.last!)
+                    
+                    var coords = [CLLocationCoordinate2D]()
+                    coords.append(self.locations.last!.coordinate)
+                    coords.append(location.coordinate)
+                    //var test2 = location.coordinate;
+                    //test2.latitude = latFromServer;
+                    //test2.longitude = lonFromServer;
+                    
+                    var coords2 = [CLLocationCoordinate2D]()
+                    let curLocation = location.coordinate // self.locations.last!.coordinate;
+                    //test.latitude -= 0.0005;
+                    //test.longitude -= 0.0005;
+                    var prevLocation = curLocation
+                    
+                    //SPRATA: This is a headache. Figure out completion handler next time
+                    returnPreviousLocationFromServer( { (success,lat,lon) -> Void in
+                        // When download completes,control flow goes here.
+                        if (success != nil) {
+                            // download success
+                            //let x = returnPreviousLocationFromServer(); //location.coordinate;
+                            prevLocation.latitude = lat!
+                            prevLocation.longitude = lon!
+                            print("prelat:",curLocation.latitude)
+                            print("lat: ", lat, "  ", prevLocation.latitude)
+                            print("prelon:", curLocation.longitude, "  ", prevLocation.longitude)
+                            print("lon: ", lon)
+                            
+                            coords2.append(prevLocation)
+                            coords2.append(curLocation)
+                            
+                            
+                            let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
+                            
+                            //Required to change the visual within a thread
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.mapView.setRegion(region, animated: true)
+                                //self.mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
+                                
+                                self.mapView.addOverlay(MKPolyline(coordinates: &coords2, count: coords2.count))
+                            })
+                            
+                            self.sendDistanceInformationToServer(curLocation.latitude, lon: curLocation.longitude);
+                        } else {
+                            // download fail
+                            print("Something went wrong in locationManager()")
+                        }
+                    })
+                    
+                }
+                
+                //save location
+                self.locations.append(location)
+            }
+        }
+    }
+
+    
+    
+    func sendDistanceInformationToServer( lat: Double, lon: Double)
+    {
+        // SPRATA THIS IS A GOOD GET REQUEST. IT WORKS. DO NOT DELETE
+        /*let headers = [
+        "access-token": UserInformation.sharedInstance.accesstoken as String
+        ]
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?id=\(UserInformation.sharedInstance.token)")!,
+        cachePolicy: .UseProtocolCachePolicy,
+        timeoutInterval: 10.0)
+        request.HTTPMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = NSURLSession.sharedSession()
+        let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        if (error != nil) {
+        print(error)
+        } else {
+        print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+        }
+        })
+        
+        dataTask.resume()
+        */
+        
+        // SPRATA THIS IS A GOOD POST REQUEST. IT WORKS. DO NOT DELETE
+        let postHeaders = [
+            "access-token": UserInformation.sharedInstance.accesstoken as String,
+        ]
+        
+        let request2 = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?latitude=\(lat)&longitude=\(lon)&timestamp=99999&id=\(UserInformation.sharedInstance.token)")!,
+            cachePolicy: .UseProtocolCachePolicy,
+            timeoutInterval: 10.0)
+        request2.HTTPMethod = "POST"
+        request2.allHTTPHeaderFields = postHeaders
+        
+        let session2 = NSURLSession.sharedSession()
+        let dataTask2 = session2.dataTaskWithRequest(request2, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error)
+            } else {
+                //let httpResponse = response as? NSHTTPURLResponse
+                //print(httpResponse)
+                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+            }
+        })
+        
+        dataTask2.resume()
+        
+    }
+    
+    
+    func sendDistanceInformationToServerWithUserID( lat: Double, lon: Double, fbUserID: Int)
+    {
+        let postHeaders = [
+            "access-token": UserInformation.sharedInstance.accesstoken as String,
+        ]
+        
+        let request2 = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?latitude=\(lat)&longitude=\(lon)&timestamp=99999&id=\(fbUserID)")!,
+            cachePolicy: .UseProtocolCachePolicy,
+            timeoutInterval: 10.0)
+        request2.HTTPMethod = "POST"
+        request2.allHTTPHeaderFields = postHeaders
+        
+        let session2 = NSURLSession.sharedSession()
+        let dataTask2 = session2.dataTaskWithRequest(request2, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error)
+            } else {
+                //let httpResponse = response as? NSHTTPURLResponse
+                //print(httpResponse)
+                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+            }
+        })
+        
+        dataTask2.resume()
+        
+    }
+    
+
+    
+    
+    func returnPreviousLocationFromServerByUserID(userID: Int, completionClosure: (success:Bool?, lat:Double?, lon:Double?) -> Void ) -> (latitude: Double, longitude: Double) {
+        var latFromServer = "0.0";
+        var lonFromServer = "0.0";
+        let headers = [
+            "access-token": UserInformation.sharedInstance.accesstoken as String
+        ]
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://52.33.234.200:8080/api/runner/?id=\(userID)")!,
+            cachePolicy: .UseProtocolCachePolicy,
+            timeoutInterval: 10.0)
+        request.HTTPMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = NSURLSession.sharedSession()
+        let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                completionClosure(success: false, lat: nil,lon: nil)
+                print(error)
+            } else {
+                let jsonResult = try!NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
+                latFromServer = jsonResult!["Latitude"] as! String
+                lonFromServer = jsonResult!["Longitude"] as! String
+                completionClosure(success: true, lat: Double(latFromServer), lon: Double(lonFromServer))
+            }
+        })
+        
+        dataTask.resume()
+        return(Double(latFromServer)!, Double(lonFromServer)!)
+        
+    }
+    
+    
     
     func returnPreviousLocationFromServer(completionClosure: (success:Bool?, lat:Double?, lon:Double?) -> Void ) -> (latitude: Double, longitude: Double) {
         var latFromServer = "0.0";

@@ -44,6 +44,8 @@
 		CB5D6CCF1C5F4B17001C13EC /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CCE1C5F4B17001C13EC /* UserInformation.swift */; };
 		CB5D6CD11C601057001C13EC /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CD01C601057001C13EC /* FriendsTableViewController.swift */; };
 		CB5D6CD51C63D4DB001C13EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */; };
+		CBB7AF5F1C6870DF004B09E3 /* FacebookImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */; };
+		CBB7AF611C68859F004B09E3 /* FriendsPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7AF601C68859F004B09E3 /* FriendsPageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		CB5D6CCE1C5F4B17001C13EC /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		CB5D6CD01C601057001C13EC /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
+		CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookImages.swift; sourceTree = "<group>"; };
+		CBB7AF601C68859F004B09E3 /* FriendsPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsPageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 				C272EFD51B5ACEE7001A4375 /* Run.swift */,
 				C272EFD61B5ACEE7001A4375 /* Location+CoreDataProperties.swift */,
 				C272EFD71B5ACEE7001A4375 /* Location.swift */,
+				CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			children = (
 				C2ED7D1E1B5A97E8003E9A81 /* AppDelegate.swift */,
 				C2ED7D221B5A97E8003E9A81 /* Main.storyboard */,
+				CBB7AF601C68859F004B09E3 /* FriendsPageCell.swift */,
 				C2ED7D281B5A97E8003E9A81 /* Assets.xcassets */,
 				C2ED7D2A1B5A97E8003E9A81 /* LaunchScreen.storyboard */,
 				C2ED7D2D1B5A97E8003E9A81 /* Info.plist */,
@@ -406,8 +412,10 @@
 				CB5D6CD11C601057001C13EC /* FriendsTableViewController.swift in Sources */,
 				C23D616E1B5BFBB00018C89A /* IBMulticolorPolylineSegment.swift in Sources */,
 				C272EFDC1B5ACEE7001A4375 /* Location+CoreDataProperties.swift in Sources */,
+				CBB7AF5F1C6870DF004B09E3 /* FacebookImages.swift in Sources */,
 				CB5D6CD51C63D4DB001C13EC /* HomeViewController.swift in Sources */,
 				C20EA5561B5AB5A100B3A820 /* IBNewRunViewController.swift in Sources */,
+				CBB7AF611C68859F004B09E3 /* FriendsPageCell.swift in Sources */,
 				C20EA5581B5AB66000B3A820 /* IBRunDetailViewController.swift in Sources */,
 				C272EFDE1B5ACEE7001A4375 /* Location.swift in Sources */,
 				C272EFD81B5ACEE7001A4375 /* Run+CoreDataProperties.swift in Sources */,
