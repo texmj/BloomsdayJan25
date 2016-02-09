@@ -46,6 +46,15 @@
 		CB5D6CD51C63D4DB001C13EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */; };
 		CBB7AF5F1C6870DF004B09E3 /* FacebookImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */; };
 		CBB7AF611C68859F004B09E3 /* FriendsPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7AF601C68859F004B09E3 /* FriendsPageCell.swift */; };
+		CBB7AF651C695636004B09E3 /* postRaceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF641C695636004B09E3 /* postRaceIcon.png */; };
+		CBB7AF671C695804004B09E3 /* home50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF661C695804004B09E3 /* home50x50.png */; };
+		CBB7AF691C695874004B09E3 /* home25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF681C695874004B09E3 /* home25x25.png */; };
+		CBB7AF6B1C69610A004B09E3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7AF6A1C69610A004B09E3 /* MainTabBarController.swift */; };
+		CBB7AF711C6972CC004B09E3 /* flag_white25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF6C1C6972CC004B09E3 /* flag_white25x25.png */; };
+		CBB7AF721C6972CC004B09E3 /* friends_white25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF6D1C6972CC004B09E3 /* friends_white25x25.png */; };
+		CBB7AF731C6972CC004B09E3 /* house_white_25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF6E1C6972CC004B09E3 /* house_white_25x25.png */; };
+		CBB7AF741C6972CC004B09E3 /* map_white_25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF6F1C6972CC004B09E3 /* map_white_25x25.png */; };
+		CBB7AF751C6972CC004B09E3 /* preRace_white_25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB7AF701C6972CC004B09E3 /* preRace_white_25x25.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +117,15 @@
 		CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		CBB7AF5E1C6870DF004B09E3 /* FacebookImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookImages.swift; sourceTree = "<group>"; };
 		CBB7AF601C68859F004B09E3 /* FriendsPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsPageCell.swift; sourceTree = "<group>"; };
+		CBB7AF641C695636004B09E3 /* postRaceIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = postRaceIcon.png; path = ../../../Downloads/postRaceIcon.png; sourceTree = "<group>"; };
+		CBB7AF661C695804004B09E3 /* home50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home50x50.png; path = ../../../Downloads/home50x50.png; sourceTree = "<group>"; };
+		CBB7AF681C695874004B09E3 /* home25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home25x25.png; path = ../../../Downloads/home25x25.png; sourceTree = "<group>"; };
+		CBB7AF6A1C69610A004B09E3 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CBB7AF6C1C6972CC004B09E3 /* flag_white25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flag_white25x25.png; path = "../../../Downloads/documents-export-2016-02-08-5/flag_white25x25.png"; sourceTree = "<group>"; };
+		CBB7AF6D1C6972CC004B09E3 /* friends_white25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = friends_white25x25.png; path = "../../../Downloads/documents-export-2016-02-08-5/friends_white25x25.png"; sourceTree = "<group>"; };
+		CBB7AF6E1C6972CC004B09E3 /* house_white_25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house_white_25x25.png; path = "../../../Downloads/documents-export-2016-02-08-5/house_white_25x25.png"; sourceTree = "<group>"; };
+		CBB7AF6F1C6972CC004B09E3 /* map_white_25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map_white_25x25.png; path = "../../../Downloads/documents-export-2016-02-08-5/map_white_25x25.png"; sourceTree = "<group>"; };
+		CBB7AF701C6972CC004B09E3 /* preRace_white_25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = preRace_white_25x25.png; path = "../../../Downloads/documents-export-2016-02-08-5/preRace_white_25x25.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +205,7 @@
 				CB5D6CCA1C5AA6EA001C13EC /* PostRunController.swift */,
 				CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */,
 				CB5D6CD01C601057001C13EC /* FriendsTableViewController.swift */,
+				CBB7AF6A1C69610A004B09E3 /* MainTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,6 +270,14 @@
 				AF5A79C51C4832AB000D54AA /* facebook-default-no-profile-pic.jpg */,
 				AF5A79C61C4832AB000D54AA /* Geo-fence Filled-25.png */,
 				AF5A79C71C4832AB000D54AA /* Geo-fence-25.png */,
+				CBB7AF641C695636004B09E3 /* postRaceIcon.png */,
+				CBB7AF661C695804004B09E3 /* home50x50.png */,
+				CBB7AF681C695874004B09E3 /* home25x25.png */,
+				CBB7AF6C1C6972CC004B09E3 /* flag_white25x25.png */,
+				CBB7AF6D1C6972CC004B09E3 /* friends_white25x25.png */,
+				CBB7AF6E1C6972CC004B09E3 /* house_white_25x25.png */,
+				CBB7AF6F1C6972CC004B09E3 /* map_white_25x25.png */,
+				CBB7AF701C6972CC004B09E3 /* preRace_white_25x25.png */,
 				AF5A79C81C4832AB000D54AA /* logo.png */,
 				AF5A79C91C4832AB000D54AA /* Settings-25.png */,
 				AF5A79D01C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg */,
@@ -374,14 +401,22 @@
 				AF5A79CD1C4832AB000D54AA /* Geo-fence-25.png in Resources */,
 				AF5A79D41C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg in Resources */,
 				C2ED7D2C1B5A97E8003E9A81 /* LaunchScreen.storyboard in Resources */,
+				CBB7AF721C6972CC004B09E3 /* friends_white25x25.png in Resources */,
+				CBB7AF671C695804004B09E3 /* home50x50.png in Resources */,
+				CBB7AF691C695874004B09E3 /* home25x25.png in Resources */,
 				AF5A79CE1C4832AB000D54AA /* logo.png in Resources */,
 				AF5A79CF1C4832AB000D54AA /* Settings-25.png in Resources */,
 				C2ED7D291B5A97E8003E9A81 /* Assets.xcassets in Resources */,
 				AF5A79CC1C4832AB000D54AA /* Geo-fence Filled-25.png in Resources */,
+				CBB7AF651C695636004B09E3 /* postRaceIcon.png in Resources */,
 				AF5A79D31C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg in Resources */,
+				CBB7AF711C6972CC004B09E3 /* flag_white25x25.png in Resources */,
+				CBB7AF751C6972CC004B09E3 /* preRace_white_25x25.png in Resources */,
 				C2ED7D241B5A97E8003E9A81 /* Main.storyboard in Resources */,
 				AF5A79CB1C4832AB000D54AA /* facebook-default-no-profile-pic.jpg in Resources */,
+				CBB7AF731C6972CC004B09E3 /* house_white_25x25.png in Resources */,
 				AF5A79D51C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg in Resources */,
+				CBB7AF741C6972CC004B09E3 /* map_white_25x25.png in Resources */,
 				AF5A79CA1C4832AB000D54AA /* Contacts-25.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +458,7 @@
 				C2ED7D271B5A97E8003E9A81 /* LogMyRun.xcdatamodeld in Sources */,
 				C272EFDA1B5ACEE7001A4375 /* Run.swift in Sources */,
 				C2ED7D1F1B5A97E8003E9A81 /* AppDelegate.swift in Sources */,
+				CBB7AF6B1C69610A004B09E3 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,7 +613,7 @@
 				);
 				INFOPLIST_FILE = LogMyRun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRun2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LogMyRun/BloomsdayApp-Bridging-Header.h";
@@ -598,7 +634,7 @@
 				);
 				INFOPLIST_FILE = LogMyRun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRun2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LogMyRun/BloomsdayApp-Bridging-Header.h";

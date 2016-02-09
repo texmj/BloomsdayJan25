@@ -19,7 +19,16 @@ class HomeViewController : UIViewController{
     
     
     override func viewDidLoad() {
+        //super viewDidLoad()
+        
+        //self.tabBarItem.image = [[UIImage imageNamed:@"yourImage_image"]
+        //imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
         FacebookImages.sharedInstance
+/*
+        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "house_white25x25.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "homeImage")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        self.tabBarItem = customTabBarItem
+  */      
         /*
        
         let userCalendar = NSCalendar.currentCalendar()

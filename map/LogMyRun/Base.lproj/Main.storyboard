@@ -123,7 +123,7 @@
                             <constraint firstItem="Rpq-10-pE3" firstAttribute="top" secondItem="Qvm-1r-Ihq" secondAttribute="topMargin" constant="12" id="yfT-h7-2tz" userLabel="Text View.top = topMargin + 2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" image="Contacts-25.png" id="yuE-qN-PQ6"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="FriendsIcon" id="yuE-qN-PQ6"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="Qsr-C4-Pw4" id="6jP-MT-Dih"/>
@@ -285,7 +285,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="0B7-sJ-OjL"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="homeImage" id="0B7-sJ-OjL"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="days" destination="b8U-KM-BFg" id="NXk-Ff-gA7"/>
@@ -297,7 +297,7 @@
             </objects>
             <point key="canvasLocation" x="587" y="-761"/>
         </scene>
-        <!--Item-->
+        <!--Finish-->
         <scene sceneID="pbP-nS-73Q">
             <objects>
                 <viewController id="kjf-2O-oue" customClass="PostRunController" customModule="LogMyRun" customModuleProvider="target" sceneMemberID="viewController">
@@ -347,9 +347,9 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="PbE-tI-sHX"/>
+                    <tabBarItem key="tabBarItem" title="Finish" image="flagIcon" id="PbE-tI-sHX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="Facebook" destination="nrT-Ef-gzf" id="qXD-XK-Cs9"/>
@@ -395,9 +395,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.95041279673684198" green="0.93725490199999995" blue="0.95686274509999991" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="1uq-dS-ctp"/>
+                    <tabBarItem key="tabBarItem" title="preRace" image="preRaceIcon" id="1uq-dS-ctp"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDk-CU-2ni" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -407,7 +407,7 @@
         <!--PostRace-->
         <scene sceneID="Bcm-IS-coW">
             <objects>
-                <tabBarController title="PostRace" id="YCN-eH-mrG" sceneMemberID="viewController">
+                <tabBarController title="PostRace" id="YCN-eH-mrG" customClass="MainTabBarController" customModule="LogMyRun" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="3AL-Hq-PIi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -570,7 +570,7 @@
                             <constraint firstItem="dQi-zX-cqU" firstAttribute="top" secondItem="hEA-J3-Y2R" secondAttribute="topMargin" constant="2" id="yog-uV-3Q1"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="Geo-fence-25.png" id="zeJ-5b-ioP"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="mapIcon" id="zeJ-5b-ioP"/>
                     <navigationItem key="navigationItem" id="lY6-f5-DGB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -794,8 +794,11 @@
     <resources>
         <image name="12144659_911516438941943_5495074849430600755_n.jpg" width="852" height="852"/>
         <image name="12299140_10203805097448077_5682606358256141805_n.jpg" width="960" height="960"/>
-        <image name="Contacts-25.png" width="25" height="25"/>
-        <image name="Geo-fence-25.png" width="25" height="25"/>
+        <image name="FriendsIcon" width="25" height="25"/>
+        <image name="flagIcon" width="25" height="25"/>
+        <image name="homeImage" width="25" height="25"/>
         <image name="logo.png" width="362" height="102"/>
+        <image name="mapIcon" width="25" height="25"/>
+        <image name="preRaceIcon" width="25" height="25"/>
     </resources>
 </document>

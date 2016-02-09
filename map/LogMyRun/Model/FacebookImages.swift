@@ -30,7 +30,6 @@ public class FacebookImages {
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     guard let data = data where error == nil else { return }
                     print(response?.suggestedFilename ?? "")
-                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                     self.profilePic = UIImage(data: data)!
                 }
             }
@@ -46,7 +45,6 @@ public class FacebookImages {
                         guard let data = data where error == nil else { return }
                         ////print(UserInformation.sharedInstance.friendIDs[i])
                         print(response?.suggestedFilename ?? "")
-                        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                         self.allTheProfilePic.append(UIImage(data: data)!)
                     }
                 }
