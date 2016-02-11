@@ -35,6 +35,8 @@ class PostRunController : UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Finish", image: UIImage(named: "flagIcon"), selectedImage: UIImage(named: "flagIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        self.tabBarItem = customTabBarItem
     }
 
 

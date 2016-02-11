@@ -11,7 +11,7 @@ import CoreData
 public class FacebookImages {
     public static let sharedInstance = FacebookImages()
     var profilePic : UIImage
-    var allTheProfilePic : [UIImage]
+    var dictionaryOfProfilePictures  = [NSString: UIImage]()
     
     func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
@@ -22,7 +22,6 @@ public class FacebookImages {
     private init()
     {
         self.profilePic = UIImage(named: "logo")!
-        self.allTheProfilePic = [UIImage(named: "logo")!]
         if let checkedUrl = NSURL(string: "https://graph.facebook.com/\(UserInformation.sharedInstance.token)/picture?type=large&return_ssl_resources=1") {
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
@@ -34,21 +33,26 @@ public class FacebookImages {
                 }
             }
         }
-        print("Unknown")
-        for var i = 0; i < UserInformation.sharedInstance.friendNames.count; i++ {
+        for var i = 0; i < UserInformation.sharedInstance.friendNames.count; i++
+        {
+            let x = i
             print(UserInformation.sharedInstance.friendNames[i])
-            if let checkedUrl = NSURL(string: "https://graph.facebook.com/\(UserInformation.sharedInstance.friendIDs[i])/picture?type=large&return_ssl_resources=1") {
+            if let checkedUrl = NSURL(string: "https://graph.facebook.com/\(UserInformation.sharedInstance.friendIDs[i])/picture?type=large&return_ssl_resources=1")
+            {
                 let imageView = UIImageView()
                 imageView.contentMode = .ScaleAspectFit
-                getDataFromUrl(checkedUrl) { (data, response, error) in
-                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                        guard let data = data where error == nil else { return }
-                        ////print(UserInformation.sharedInstance.friendIDs[i])
-                        print(response?.suggestedFilename ?? "")
-                        self.allTheProfilePic.append(UIImage(data: data)!)
-                    }
+                self.getDataFromUrl(checkedUrl)
+                    { (data, response, error) in
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            guard let data = data where error == nil else { return }
+                            self.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[x]] = UIImage(data: data)!
+                        }
                 }
+                
             }
+            
         }
+        
+        
     }
 }

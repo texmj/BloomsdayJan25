@@ -85,8 +85,6 @@ public class UserInformation {
                 
                 let facebookID = self.token
                 let task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")!) { data, response, error in
-                    print("~Here~")
-                    print(response)
                 }
                 task.resume()
                 

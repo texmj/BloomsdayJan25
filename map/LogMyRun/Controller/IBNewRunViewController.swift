@@ -28,6 +28,8 @@ class IBNewRunViewController: UIViewController {
     
     var seconds = 0.0
     var distance = 0.0
+    var flagStartLocation = true
+    var notStartLocation = false
     
     var runners = 0;
     var currentRunner = 0;
@@ -49,6 +51,9 @@ class IBNewRunViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "mapIcon"), selectedImage: UIImage(named: "mapIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        self.tabBarItem = customTabBarItem
+        
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.managedObjectContext = appDel.managedObjectContext
         initUI()
@@ -159,131 +164,104 @@ class IBNewRunViewController: UIViewController {
     //TODO Stop the app from calling this function when saving the run
     //SPRATA: Added 2 new functions (for get and post calls) that work based on the userID
     //         need to implement them when we have a better handle on testing runners
-    func locationManager2(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        for location in locations as [CLLocation] {
-            let howRecent = location.timestamp.timeIntervalSinceNow
-            print("Current Person Being Tracked is: ", UserInformation.sharedInstance.checkWhoIsBeingTracked(UserInformation.sharedInstance.currentPersonTrackingByIndex))
-            if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
-                //Update distance
-                if self.locations.count > 0
-                {
-                    distance += location.distanceFromLocation(self.locations.last!)
-                    
-                    var coords = [CLLocationCoordinate2D]()
-                    coords.append(self.locations.last!.coordinate)
-                    coords.append(location.coordinate)
-                    //var test2 = location.coordinate;
-                    //test2.latitude = latFromServer;
-                    //test2.longitude = lonFromServer;
-                    
-                    var coords2 = [CLLocationCoordinate2D]()
-                    let curLocation = location.coordinate // self.locations.last!.coordinate;
-                    //test.latitude -= 0.0005;
-                    //test.longitude -= 0.0005;
-                    var prevLocation = curLocation
-                    
-                    //SPRATA: This is a headache. Figure out completion handler next time
-                    returnPreviousLocationFromServer( { (success,lat,lon) -> Void in
-                        // When download completes,control flow goes here.
-                        if (success != nil) {
-                            // download success
-                            //let x = returnPreviousLocationFromServer(); //location.coordinate;
-                            prevLocation.latitude = lat!
-                            prevLocation.longitude = lon!
-                            print("prelat:",curLocation.latitude)
-                            print("lat: ", lat, "  ", prevLocation.latitude)
-                            print("prelon:", curLocation.longitude, "  ", prevLocation.longitude)
-                            print("lon: ", lon)
-                            
-                            coords2.append(prevLocation)
-                            coords2.append(curLocation)
-                            
-                            
-                            let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
-                            
-                            //Required to change the visual within a thread
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.mapView.setRegion(region, animated: true)
-                                //self.mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
-                                
-                                self.mapView.addOverlay(MKPolyline(coordinates: &coords2, count: coords2.count))
-                            })
-                            
-                            self.sendDistanceInformationToServer(curLocation.latitude, lon: curLocation.longitude);
-                        } else {
-                            // download fail
-                            print("Something went wrong in locationManager()")
-                        }
-                    })
-                    
-                }
-                
-                //save location
-                self.locations.append(location)
-            }
-        }
-    }
     
-    //Temp method/proof of concept for tracking multiple people around a course for bloomsday section of app!
+    //This locationManager helps you find your friends
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         for location in locations as [CLLocation] {
+            
+            
             let howRecent = location.timestamp.timeIntervalSinceNow
-
+            
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
+                var coords = [CLLocationCoordinate2D]()
+                var curLocation = location.coordinate // self.locations.last!.coordinate;
+                var prevLocation = curLocation
+                
                 //Update distance
-
                 for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count-1; i++ {
-                    print(UserInformation.sharedInstance.friendIDs[i], UserInformation.sharedInstance.isUserBeingTrackedArray[i])
+                   
+                    
+                    print(UserInformation.sharedInstance.userIDsArray[i], UserInformation.sharedInstance.isUserBeingTrackedArray[i])
+                    
                     if self.locations.count > 0 && UserInformation.sharedInstance.isUserBeingTrackedArray[i]
                     {
                         print("HERE for", UserInformation.sharedInstance.userIDsArray[i])
-
-                        distance += location.distanceFromLocation(self.locations.last!)
                         
-                        var coords = [CLLocationCoordinate2D]()
-                        let curLocation = location.coordinate // self.locations.last!.coordinate;
-                        var prevLocation = curLocation
+                        let dispatchGroup = dispatch_group_create()
+                        dispatch_group_enter(dispatchGroup) // enter group
+                        
                         
                         returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[i],completionClosure: { (success,lat,lon, userIDSame) -> Void in
                             // When download completes,control flow goes here.
                             if (success != nil) {
-                                prevLocation.latitude = lat!
-                                prevLocation.longitude = lon!
-                                print("prelat:",curLocation.latitude)
-                                print("lat: ", lat, "  ", prevLocation.latitude)
-                                print("prelon:", curLocation.longitude, "  ", prevLocation.longitude)
-                                print("lon: ", lon)
-                                
-                                coords.append(prevLocation)
-                                coords.append(curLocation)
-                                
-                                let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
-                                
+                                if(!self.flagStartLocation){ //make sure not first run
+                                    //var mylocation = [[CLLocation alloc] initWithLatitude:lat! longitude:lon!];
+                                    
+                                    self.distance += location.distanceFromLocation(CLLocation(latitude: prevLocation.latitude, longitude: prevLocation.longitude))//self.locations.last!)
+                                    
+                                    print("Count of Coords", coords.count)
+                                    print("prevLocation: ", prevLocation.latitude, prevLocation.longitude)
+                                    curLocation.latitude = lat!
+                                    curLocation.longitude = lon!
+
+                                    
+                                    //coords.append(prevLocation)
+                                    coords.append(curLocation)
+                                    
+                                let region = MKCoordinateRegionMakeWithDistance(curLocation, 500, 500)
                                 //Required to change the visual within a thread
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    self.mapView.setRegion(region, animated: true)
-                                    //self.mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
                                     
+                                    self.mapView.setRegion(region, animated: true)
                                     self.mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
                                 })
+                                    //note after appended!
+                                    prevLocation.latitude = lat!
+                                    prevLocation.longitude = lon!
+                                    
+                                }else if(self.notStartLocation) {
+                                    print("First time, set lat&lon different")
+                                    prevLocation.latitude = lat!
+                                    prevLocation.longitude = lon!
+                                    self.flagStartLocation = false
+                                } else {
+                                    print("First time, set lat&lon different")
+                                    prevLocation.latitude = lat!
+                                    prevLocation.longitude = lon!
 
-                                self.sendDistanceInformationToServerWithUserID(curLocation.latitude, lon: curLocation.longitude, userID: userIDSame!);
+                                }// set this to false after first for loop
+                                /**********IMPORTANT**********/
+                                //!!!! This needs to change so only sends the runners information if they specify they want to be tracked!!!!!!!!!!!!!
+                                if(UserInformation.sharedInstance.userIDsArray[i] == UserInformation.sharedInstance.token)
+                                {
+                                    
+                                    self.sendDistanceInformationToServerWithUserID(curLocation.latitude, lon: curLocation.longitude, userID: userIDSame!);
+                                }
+                                
                             } else {
                                 // download fail
                                 print("Something went wrong in locationManager()")
                             }
+                            //leave group
+                            dispatch_group_leave(dispatchGroup)
                         })
+                        // this line block while loop until the async task above completed
+                        dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
                         
+                        ///self.mapView.showsUserLocation = true;
                     }
                 }
-                
-                
                 //save location
-                self.locations.append(location)
+                self.locations.append(CLLocation(latitude: curLocation.latitude, longitude: curLocation.longitude))
+                notStartLocation = true
+                print(notStartLocation, "<notStartlocation")
             }
         }
     }
-
+ 
+    
+    
     
     
     func sendDistanceInformationToServer( lat: Double, lon: Double)

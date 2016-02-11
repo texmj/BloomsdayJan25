@@ -21,8 +21,7 @@ class FriendsPageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         TrackerSwitch.on = false
-        //TrackerSwitch.addTarget(self, action: Selector("switchIsChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-        // Initialization code
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -30,18 +29,5 @@ class FriendsPageCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
-    /*
-    func switchIsChanged(TrackerSwitch: UISwitch!)
-    {
-        if (TrackerSwitch.on == true){
-            print("onCell")
-        }
-        else{
-            print("offCell")
-        }
-    }*/
-    //Add bool isSelected
 
 }

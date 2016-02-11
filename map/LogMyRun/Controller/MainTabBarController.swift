@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController  {
         super.viewDidLoad()
         //get the reference to the shared model
         
-        //self.tabBarItem = UITabBarItem(title: "Finish", image: UIImage(named: "flag_white25x25.png"), selectedImage: UIImage(named: "flagIcon"))
+       // self.tabBarItem = UITabBarItem(title: "Finish", image: UIImage(named: "flagIcon_white"), selectedImage: UIImage(named: "flagIcon"))
         
 
         
@@ -23,7 +23,7 @@ class MainTabBarController: UITabBarController  {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 109/255, green: 34/255, blue: 117/255, alpha: 1.0) ], forState:.Normal)
         
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Selected)
-        
+
         
 
         

@@ -11,13 +11,14 @@ import Foundation
 
 class FriendsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet var tableView: UITableView
-    var items: [NSString] = ["We", "Heart", "Swift"]
     var friendImages = [UIImage]()
         
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "FriendsIcon"), selectedImage: UIImage(named: "friendsIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        self.tabBarItem = customTabBarItem
+        
         print("View Did Load")
         FacebookImages.sharedInstance //instantiate??
                 self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -29,32 +30,21 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-                //asyncronous:
-        //SPRATA DYNAMICALLY GET FRIEND PICTURES!!!!
-        /*
-        if let checkedUrl = NSURL(string: "https://graph.facebook.com/\(UserInformation.sharedInstance.friendIDs[indexPath.row])/picture?type=large&return_ssl_resources=1") {
-            let imageView = UIImageView()
-            imageView.contentMode = .ScaleAspectFit
-            downloadImage(checkedUrl, cell: cell)
-        }*/
         let cell:FriendsPageCell = (self.tableView.dequeueReusableCellWithIdentifier("FriendCell"))! as! FriendsPageCell
         if(indexPath.row == 0) {
             cell.CellName.text = UserInformation.sharedInstance.name as String
             cell.TrackerSwitch.tag = 0
-            //cell.textLabel?.text = UserInformation.sharedInstance.name as String
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
             print("IndexPathRow:" , indexPath.row)
             cell.CellImage.image = FacebookImages.sharedInstance.profilePic
             cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-
-            
         }else {
             cell.CellName.text = UserInformation.sharedInstance.friendNames[indexPath.row-1] as String
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
             print("IndexPathRow:" , indexPath.row)
-            cell.CellImage.image = FacebookImages.sharedInstance.allTheProfilePic[indexPath.row]
+            cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row-1]]
             cell.TrackerSwitch.tag = indexPath.row
             cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
             
