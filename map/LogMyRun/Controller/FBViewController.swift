@@ -11,54 +11,95 @@ import CoreData
 
 class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
 
-    
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
     var managedObjectContext : NSManagedObjectContext?
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController.isKindOfClass(IBNewRunViewController) {
-            if let newRunVC = segue.destinationViewController as? IBNewRunViewController {
-                newRunVC.managedObjectContext = managedObjectContext
+        print("Prep For Segue")
+        if segue.identifier == "HomeSegue" {
+            returnUserData() //not necessary to have completion handler
+                {
+                    (result: UserInformation) in
             }
         }
     }
     
-    @IBOutlet weak var loginButton: FBSDKLoginButton!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        /*
-        let loginButton: FBSDKLoginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.center = view.center
-        view.addSubview(loginButton)
-        */
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "observeProfileChange:", name: FBSDKProfileDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "observeTokenChange:", name: FBSDKAccessTokenDidChangeNotification, object: nil)
+
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
-            // User is already logged in, do work such as go to next view controller.
-            print(FBSDKAccessToken.currentAccessToken())
-            returnUserData()
-            
+            /*print("IS IT HERE?")
+            // User is already logged in, go to next view controller.
+            dispatch_async(dispatch_get_main_queue()) {
+                [unowned self] in
+                self.performSegueWithIdentifier("HomeSegue", sender: self)
+            }*/
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-            
-            //returnUserData()
+            //let loginView = loginButton //: FBSDKLoginButton = FBSDKLoginButton()
+           // self.view.addSubview(loginView)
+            //loginView.center = self.view.center
+            loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+            loginButton.delegate = self
         }
     }
     
-
+    override func viewDidAppear(animated: Bool) {
+        print("\n\n\nVIEW DID APPEAR\n\n\n\n")
+        if (FBSDKAccessToken.currentAccessToken() != nil) {///(FBSDKProfile.currentProfile() != nil) {
+            //Is this needed?
+            print("HERE!!!! observeProfileDidchange")
+            dispatch_async(dispatch_get_main_queue()) {
+                [unowned self] in
+                self.performSegueWithIdentifier("HomeSegue", sender: self)
+            }
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func observeProfileChange(notfication: NSNotification) {
+        print("observeProfileChange")
+        if (FBSDKAccessToken.currentAccessToken() != nil) {///(FBSDKProfile.currentProfile() != nil) {
+           //Is this needed?
+            print("HERE!!!! observeProfileDidchange")
+            /*dispatch_async(dispatch_get_main_queue()) {
+                [unowned self] in
+                self.performSegueWithIdentifier("HomeSegue", sender: self)
+            }*/
+            
+        }
+    }
+    
+    func observeTokenChange(notfication: NSNotification) {
+        print("observeTokenChange")
+        
+        if (FBSDKAccessToken.currentAccessToken() == nil) {
+            //continueButton.setTitle("continue as a guest", forState: UIControlState.Normal)
+        }
+        else {
+            ///bserveProfileChange(nil)
+            print("OBSERVER USER DATA?")
+            
+            //returnUserData()
+            //{
+            //    (result: UserInformation) in
+                //print("got back: \(result)")
+            //}
+            //let title: String = "continue as \(UserInfo.name)"
+            //continueButton.setTitle(title, forState: UIControlState.Normal)
+        }
+    }
+
     // Facebook Delegate Methods
     //TODO INTEGRATE
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -74,9 +115,10 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
+            print("HERE!!--!!")
+            dispatch_async(dispatch_get_main_queue()) {
+                [unowned self] in
+                self.performSegueWithIdentifier("HomeSegue", sender: self)
             }
         }
     }
@@ -85,29 +127,11 @@ class FBViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User Logged Out")
     }
     
-    func returnUserData()
+    func returnUserData(completion: (result: UserInformation) -> Void)
     {
-        let runner = UserInformation.sharedInstance
-        print(runner.name)  
-        /* SP: This works!
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                print("Error: \(error)")
-            }
-            else
-            {
-                print("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                print("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
-                print("User Email is: \(userEmail)")
-            }
-        })
-        */
+        //let runner = UserInformation.sharedInstance
+        //print(runner.name)
+        completion(result: UserInformation.sharedInstance)
     }
 
 

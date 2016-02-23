@@ -16,23 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://httpbin.org/")!)
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        let params = ["username":"username", "password":"password"] as Dictionary<String, String>
-        
-        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task2 = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            print("Response: \(response)")})
-        
-        task2.resume()
-        
         return true
     }
 

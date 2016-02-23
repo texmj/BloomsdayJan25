@@ -7,9 +7,10 @@ import UIKit
 import MapKit
 import HealthKit
 import CoreLocation
+import CoreData
 
 class IBRunDetailViewController: UIViewController {
-
+    
     var run: Run!
     
     @IBOutlet weak var timeLabel: UILabel!
@@ -21,20 +22,42 @@ class IBRunDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.saveRun(Float(run.distance!), duration: Int(run.duration!), timestamp: run.timestamp!)
         // Do any additional setup after loading the view.
         configureView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    func saveRun(distance: Float, duration: Int, timestamp: NSDate) {
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("Run",
+            inManagedObjectContext:managedContext)
+        
+        let run = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext: managedContext)
+        
+        run.setValue(distance, forKey: "distance")
+        run.setValue(duration, forKey: "duration")
+        run.setValue(timestamp, forKey: "timestamp")
+        do {
+            try managedContext.save()
+            //runs.append(run)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
     func configureView()
     {
-//        mapView.delegate = self
+        //        mapView.delegate = self
         
         let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: (run.distance?.doubleValue)!)
         distanceLabel.text = distanceQuantity.description
@@ -62,7 +85,7 @@ class IBRunDetailViewController: UIViewController {
             mapView.region = mapRegion()
             
             //Make the lines on the map
-//            mapView.addOverlay(polyline())
+            //            mapView.addOverlay(polyline())
             let colorSegments = IBMulticolorPolylineSegment.colorSegments(forLocations: run.locations?.array as! [Location])
             mapView.addOverlays(colorSegments)
             
@@ -85,7 +108,7 @@ class IBRunDetailViewController: UIViewController {
         let locations = run.locations?.array as! [Location]
         
         for location in locations {
-              minLat = min(minLat, location.latitude!.doubleValue)
+            minLat = min(minLat, location.latitude!.doubleValue)
             minLng = min(minLng, location.longitude!.doubleValue)
             maxLat = max(maxLat, location.latitude!.doubleValue)
             maxLng = max(maxLng, location.longitude!.doubleValue)
@@ -114,7 +137,7 @@ class IBRunDetailViewController: UIViewController {
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if !overlay.isKindOfClass(IBMulticolorPolylineSegment) {
-//            return nil
+            //            return nil
             print("not IBMulticolorPolylineSegment")
         }
         
@@ -128,14 +151,14 @@ class IBRunDetailViewController: UIViewController {
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
 
 extension IBRunDetailViewController : MKMapViewDelegate

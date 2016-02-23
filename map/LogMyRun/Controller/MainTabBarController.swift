@@ -10,6 +10,8 @@ import Foundation
 
 class MainTabBarController: UITabBarController  {
     
+    //var managedObjectContext : NSManagedObjectContext?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //get the reference to the shared model
@@ -29,6 +31,9 @@ class MainTabBarController: UITabBarController  {
         
         //let Finish:UITabBarItem = UITabBarItem(title: nil, image: UIImage(named: "flag_white25x25.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "flagIcon"))
 
+    }
+    override func viewDidAppear(animated: Bool) {
+        FacebookImages.sharedInstance
     }
     
     

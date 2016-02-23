@@ -39,6 +39,8 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             print("IndexPathRow:" , indexPath.row)
             cell.CellImage.image = FacebookImages.sharedInstance.profilePic
             cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            cell.TrackerSwitch.on = true
+            UserInformation.sharedInstance.isUserBeingTrackedArray[0] = true
         }else {
             cell.CellName.text = UserInformation.sharedInstance.friendNames[indexPath.row-1] as String
             let imageView = UIImageView()
@@ -79,7 +81,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You selected cell #\(indexPath.row)!")
         //sender.selected=!sender.selected;
-        UserInformation.sharedInstance.currentPersonTrackingByIndex = indexPath.row
+        ////UserInformation.sharedInstance.currentPersonTrackingByIndex = indexPath.row
     }
     
     
