@@ -72,9 +72,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>LogMyRuns wants to track your run</string>
+	<string>Lilac12k wants to track your run</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>LogMyRuns wants to track your run</string>
+	<string>Lilac12k wants to track your run</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

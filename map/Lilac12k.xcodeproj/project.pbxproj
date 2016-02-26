@@ -120,16 +120,16 @@
 		C272EFD51B5ACEE7001A4375 /* Run.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		C272EFD61B5ACEE7001A4375 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C272EFD71B5ACEE7001A4375 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		C2ED7D1B1B5A97E8003E9A81 /* LogMyRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogMyRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2ED7D1B1B5A97E8003E9A81 /* Lilac12k.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lilac12k.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2ED7D1E1B5A97E8003E9A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2ED7D261B5A97E8003E9A81 /* LogMyRun.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LogMyRun.xcdatamodel; sourceTree = "<group>"; };
 		C2ED7D281B5A97E8003E9A81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2ED7D2B1B5A97E8003E9A81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2ED7D2D1B5A97E8003E9A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2ED7D321B5A97E8003E9A81 /* LogMyRunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogMyRunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2ED7D321B5A97E8003E9A81 /* Lilac12k.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lilac12k.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2ED7D361B5A97E8003E9A81 /* LogMyRunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMyRunTests.swift; sourceTree = "<group>"; };
 		C2ED7D381B5A97E8003E9A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2ED7D3D1B5A97E8003E9A81 /* LogMyRunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogMyRunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2ED7D3D1B5A97E8003E9A81 /* Lilac12k.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lilac12k.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2ED7D411B5A97E8003E9A81 /* LogMyRunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMyRunUITests.swift; sourceTree = "<group>"; };
 		C2ED7D431B5A97E8003E9A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB39A6FF1C7CF02400745AE5 /* bloomsdaylogo_clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bloomsdaylogo_clean.png; path = ../../../../Downloads/bloomsdaylogo_clean.png; sourceTree = "<group>"; };
@@ -248,9 +248,9 @@
 		C2ED7D1C1B5A97E8003E9A81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C2ED7D1B1B5A97E8003E9A81 /* LogMyRun.app */,
-				C2ED7D321B5A97E8003E9A81 /* LogMyRunTests.xctest */,
-				C2ED7D3D1B5A97E8003E9A81 /* LogMyRunUITests.xctest */,
+				C2ED7D1B1B5A97E8003E9A81 /* Lilac12k.app */,
+				C2ED7D321B5A97E8003E9A81 /* Lilac12k.xctest */,
+				C2ED7D3D1B5A97E8003E9A81 /* Lilac12k.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,9 +308,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C2ED7D1A1B5A97E8003E9A81 /* LogMyRun */ = {
+		C2ED7D1A1B5A97E8003E9A81 /* Lilac12k */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C2ED7D461B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "LogMyRun" */;
+			buildConfigurationList = C2ED7D461B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "Lilac12k" */;
 			buildPhases = (
 				C2ED7D171B5A97E8003E9A81 /* Sources */,
 				C2ED7D181B5A97E8003E9A81 /* Frameworks */,
@@ -320,14 +320,14 @@
 			);
 			dependencies = (
 			);
-			name = LogMyRun;
+			name = Lilac12k;
 			productName = LogMyRun;
-			productReference = C2ED7D1B1B5A97E8003E9A81 /* LogMyRun.app */;
+			productReference = C2ED7D1B1B5A97E8003E9A81 /* Lilac12k.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C2ED7D311B5A97E8003E9A81 /* LogMyRunTests */ = {
+		C2ED7D311B5A97E8003E9A81 /* Lilac12kTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C2ED7D491B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "LogMyRunTests" */;
+			buildConfigurationList = C2ED7D491B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "Lilac12kTests" */;
 			buildPhases = (
 				C2ED7D2E1B5A97E8003E9A81 /* Sources */,
 				C2ED7D2F1B5A97E8003E9A81 /* Frameworks */,
@@ -338,14 +338,14 @@
 			dependencies = (
 				C2ED7D341B5A97E8003E9A81 /* PBXTargetDependency */,
 			);
-			name = LogMyRunTests;
+			name = Lilac12kTests;
 			productName = LogMyRunTests;
-			productReference = C2ED7D321B5A97E8003E9A81 /* LogMyRunTests.xctest */;
+			productReference = C2ED7D321B5A97E8003E9A81 /* Lilac12k.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C2ED7D3C1B5A97E8003E9A81 /* LogMyRunUITests */ = {
+		C2ED7D3C1B5A97E8003E9A81 /* Lilac12kUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C2ED7D4C1B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "LogMyRunUITests" */;
+			buildConfigurationList = C2ED7D4C1B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "Lilac12kUITests" */;
 			buildPhases = (
 				C2ED7D391B5A97E8003E9A81 /* Sources */,
 				C2ED7D3A1B5A97E8003E9A81 /* Frameworks */,
@@ -356,9 +356,9 @@
 			dependencies = (
 				C2ED7D3F1B5A97E8003E9A81 /* PBXTargetDependency */,
 			);
-			name = LogMyRunUITests;
+			name = Lilac12kUITests;
 			productName = LogMyRunUITests;
-			productReference = C2ED7D3D1B5A97E8003E9A81 /* LogMyRunUITests.xctest */;
+			productReference = C2ED7D3D1B5A97E8003E9A81 /* Lilac12k.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -377,7 +377,7 @@
 				TargetAttributes = {
 					C2ED7D1A1B5A97E8003E9A81 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = Y9V9TQVG6Z;
+						DevelopmentTeam = EEUWQRW53Z;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -394,7 +394,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C2ED7D161B5A97E8003E9A81 /* Build configuration list for PBXProject "LogMyRun" */;
+			buildConfigurationList = C2ED7D161B5A97E8003E9A81 /* Build configuration list for PBXProject "Lilac12k" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -407,9 +407,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C2ED7D1A1B5A97E8003E9A81 /* LogMyRun */,
-				C2ED7D311B5A97E8003E9A81 /* LogMyRunTests */,
-				C2ED7D3C1B5A97E8003E9A81 /* LogMyRunUITests */,
+				C2ED7D1A1B5A97E8003E9A81 /* Lilac12k */,
+				C2ED7D311B5A97E8003E9A81 /* Lilac12kTests */,
+				C2ED7D3C1B5A97E8003E9A81 /* Lilac12kUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -514,12 +514,12 @@
 /* Begin PBXTargetDependency section */
 		C2ED7D341B5A97E8003E9A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C2ED7D1A1B5A97E8003E9A81 /* LogMyRun */;
+			target = C2ED7D1A1B5A97E8003E9A81 /* Lilac12k */;
 			targetProxy = C2ED7D331B5A97E8003E9A81 /* PBXContainerItemProxy */;
 		};
 		C2ED7D3F1B5A97E8003E9A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C2ED7D1A1B5A97E8003E9A81 /* LogMyRun */;
+			target = C2ED7D1A1B5A97E8003E9A81 /* Lilac12k */;
 			targetProxy = C2ED7D3E1B5A97E8003E9A81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -640,8 +640,8 @@
 				);
 				INFOPLIST_FILE = LogMyRun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRun2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.Lilac12k;
+				PRODUCT_NAME = Lilac12k;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LogMyRun/BloomsdayApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -661,8 +661,8 @@
 				);
 				INFOPLIST_FILE = LogMyRun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRun2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.Lilac12k;
+				PRODUCT_NAME = Lilac12k;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LogMyRun/BloomsdayApp-Bridging-Header.h";
 			};
@@ -679,8 +679,8 @@
 				INFOPLIST_FILE = LogMyRunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRunTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LogMyRun.app/LogMyRun";
+				PRODUCT_NAME = Lilac12k;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lilac12k.app/Lilac12k";
 			};
 			name = Debug;
 		};
@@ -695,8 +695,8 @@
 				INFOPLIST_FILE = LogMyRunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRunTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LogMyRun.app/LogMyRun";
+				PRODUCT_NAME = Lilac12k;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lilac12k.app/Lilac12k";
 			};
 			name = Release;
 		};
@@ -710,7 +710,7 @@
 				INFOPLIST_FILE = LogMyRunUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRunUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lilac12k;
 				TEST_TARGET_NAME = LogMyRun;
 				USES_XCTRUNNER = YES;
 			};
@@ -726,7 +726,7 @@
 				INFOPLIST_FILE = LogMyRunUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codemysource.LogMyRunUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lilac12k;
 				TEST_TARGET_NAME = LogMyRun;
 				USES_XCTRUNNER = YES;
 			};
@@ -735,7 +735,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C2ED7D161B5A97E8003E9A81 /* Build configuration list for PBXProject "LogMyRun" */ = {
+		C2ED7D161B5A97E8003E9A81 /* Build configuration list for PBXProject "Lilac12k" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C2ED7D441B5A97E8003E9A81 /* Debug */,
@@ -744,7 +744,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C2ED7D461B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "LogMyRun" */ = {
+		C2ED7D461B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "Lilac12k" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C2ED7D471B5A97E8003E9A81 /* Debug */,
@@ -753,7 +753,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C2ED7D491B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "LogMyRunTests" */ = {
+		C2ED7D491B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "Lilac12kTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C2ED7D4A1B5A97E8003E9A81 /* Debug */,
@@ -762,7 +762,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C2ED7D4C1B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "LogMyRunUITests" */ = {
+		C2ED7D4C1B5A97E8003E9A81 /* Build configuration list for PBXNativeTarget "Lilac12kUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C2ED7D4D1B5A97E8003E9A81 /* Debug */,

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-               BuildableName = "LogMyRun.app"
-               BlueprintName = "LogMyRun"
-               ReferencedContainer = "container:LogMyRun.xcodeproj">
+               BuildableName = "Lilac12k.app"
+               BlueprintName = "Lilac12k"
+               ReferencedContainer = "container:Lilac12k.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2ED7D311B5A97E8003E9A81"
-               BuildableName = "LogMyRunTests.xctest"
-               BlueprintName = "LogMyRunTests"
-               ReferencedContainer = "container:LogMyRun.xcodeproj">
+               BuildableName = "Lilac12k.xctest"
+               BlueprintName = "Lilac12kTests"
+               ReferencedContainer = "container:Lilac12k.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2ED7D3C1B5A97E8003E9A81"
-               BuildableName = "LogMyRunUITests.xctest"
-               BlueprintName = "LogMyRunUITests"
-               ReferencedContainer = "container:LogMyRun.xcodeproj">
+               BuildableName = "Lilac12k.xctest"
+               BlueprintName = "Lilac12kUITests"
+               ReferencedContainer = "container:Lilac12k.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-            BuildableName = "LogMyRun.app"
-            BlueprintName = "LogMyRun"
-            ReferencedContainer = "container:LogMyRun.xcodeproj">
+            BuildableName = "Lilac12k.app"
+            BlueprintName = "Lilac12k"
+            ReferencedContainer = "container:Lilac12k.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-            BuildableName = "LogMyRun.app"
-            BlueprintName = "LogMyRun"
-            ReferencedContainer = "container:LogMyRun.xcodeproj">
+            BuildableName = "Lilac12k.app"
+            BlueprintName = "Lilac12k"
+            ReferencedContainer = "container:Lilac12k.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C2ED7D1A1B5A97E8003E9A81"
-            BuildableName = "LogMyRun.app"
-            BlueprintName = "LogMyRun"
-            ReferencedContainer = "container:LogMyRun.xcodeproj">
+            BuildableName = "Lilac12k.app"
+            BlueprintName = "Lilac12k"
+            ReferencedContainer = "container:Lilac12k.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
