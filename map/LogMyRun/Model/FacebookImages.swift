@@ -29,7 +29,7 @@ public class FacebookImages {
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     guard let data = data where error == nil else { return }
                     print(response?.suggestedFilename ?? "")
-                    self.profilePic = UIImage(data: data)!
+                    self.profilePic = UIImage(data: data)! //Crashed Here a couple times
                 }
             }
         }

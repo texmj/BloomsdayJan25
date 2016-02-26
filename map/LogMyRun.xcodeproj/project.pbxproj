@@ -20,7 +20,6 @@
 		AF5A79D31C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79D01C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg */; };
 		AF5A79D41C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79D11C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg */; };
 		AF5A79D51C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79D21C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg */; };
-		AFB641361C6FD97400F16035 /* bloomsdaylogo_clean.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB641351C6FD97400F16035 /* bloomsdaylogo_clean.png */; };
 		AFB641391C6FF1B700F16035 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB641371C6FF1B700F16035 /* Main.storyboard */; };
 		AFBE6AE41C6AA53E00F862B3 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = AFBE6AE31C6AA53E00F862B3 /* back.png */; };
 		AFF46A0F1C74D66E0048140D /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF46A0E1C74D66E0048140D /* water.png */; };
@@ -56,6 +55,7 @@
 		C2ED7D2C1B5A97E8003E9A81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2ED7D2A1B5A97E8003E9A81 /* LaunchScreen.storyboard */; };
 		C2ED7D371B5A97E8003E9A81 /* LogMyRunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ED7D361B5A97E8003E9A81 /* LogMyRunTests.swift */; };
 		C2ED7D421B5A97E8003E9A81 /* LogMyRunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ED7D411B5A97E8003E9A81 /* LogMyRunUITests.swift */; };
+		CB39A7001C7CF02400745AE5 /* bloomsdaylogo_clean.png in Resources */ = {isa = PBXBuildFile; fileRef = CB39A6FF1C7CF02400745AE5 /* bloomsdaylogo_clean.png */; };
 		CB5D6CCB1C5AA6EA001C13EC /* PostRunController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CCA1C5AA6EA001C13EC /* PostRunController.swift */; };
 		CB5D6CCF1C5F4B17001C13EC /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CCE1C5F4B17001C13EC /* UserInformation.swift */; };
 		CB5D6CD51C63D4DB001C13EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */; };
@@ -95,7 +95,6 @@
 		AF5A79D01C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10582849_10201960976218348_8498841369157223772_o.jpg; sourceTree = "<group>"; };
 		AF5A79D11C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12144659_911516438941943_5495074849430600755_n.jpg; sourceTree = "<group>"; };
 		AF5A79D21C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12299140_10203805097448077_5682606358256141805_n.jpg; sourceTree = "<group>"; };
-		AFB641351C6FD97400F16035 /* bloomsdaylogo_clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bloomsdaylogo_clean.png; path = ../../../Downloads/bloomsdaylogo_clean.png; sourceTree = "<group>"; };
 		AFB641381C6FF1B700F16035 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFBE6AE31C6AA53E00F862B3 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		AFF46A0E1C74D66E0048140D /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
@@ -133,6 +132,7 @@
 		C2ED7D3D1B5A97E8003E9A81 /* LogMyRunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogMyRunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2ED7D411B5A97E8003E9A81 /* LogMyRunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMyRunUITests.swift; sourceTree = "<group>"; };
 		C2ED7D431B5A97E8003E9A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB39A6FF1C7CF02400745AE5 /* bloomsdaylogo_clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bloomsdaylogo_clean.png; path = ../../../../Downloads/bloomsdaylogo_clean.png; sourceTree = "<group>"; };
 		CB5D6CCA1C5AA6EA001C13EC /* PostRunController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRunController.swift; sourceTree = "<group>"; };
 		CB5D6CCE1C5F4B17001C13EC /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		CB5D6CD41C63D4DB001C13EC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 				AF5A79C71C4832AB000D54AA /* Geo-fence-25.png */,
 				AF5A79C81C4832AB000D54AA /* logo.png */,
 				AFBE6AE31C6AA53E00F862B3 /* back.png */,
-				AFB641351C6FD97400F16035 /* bloomsdaylogo_clean.png */,
+				CB39A6FF1C7CF02400745AE5 /* bloomsdaylogo_clean.png */,
 				AF5A79C91C4832AB000D54AA /* Settings-25.png */,
 				AF5A79D01C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg */,
 				AF5A79D11C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg */,
@@ -423,9 +423,9 @@
 				AFF46A111C74D67A0048140D /* track.png in Resources */,
 				AF5A79D41C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg in Resources */,
 				C2ED7D2C1B5A97E8003E9A81 /* LaunchScreen.storyboard in Resources */,
-				AFB641361C6FD97400F16035 /* bloomsdaylogo_clean.png in Resources */,
 				AFF46A191C74D6AB0048140D /* MagicMountainAttractions.plist in Resources */,
 				AF5A79CE1C4832AB000D54AA /* logo.png in Resources */,
+				CB39A7001C7CF02400745AE5 /* bloomsdaylogo_clean.png in Resources */,
 				AF5A79CF1C4832AB000D54AA /* Settings-25.png in Resources */,
 				C2ED7D291B5A97E8003E9A81 /* Assets.xcassets in Resources */,
 				AFB641391C6FF1B700F16035 /* Main.storyboard in Resources */,

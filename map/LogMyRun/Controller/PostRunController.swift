@@ -13,6 +13,8 @@ class PostRunController : UIViewController{
     @IBOutlet weak var GoodieBag: UIButton!
     @IBOutlet weak var Results:  UIButton!
     @IBOutlet weak var Facebook: UIButton!
+    @IBOutlet weak var Sponsors: UIButton!
+    @IBOutlet weak var RacePhotos: UIButton!
     
     @IBAction func GoodieBag(sender: AnyObject) {
         if let url = NSURL(string: "http://bloomsdayrun.org/virtual-race-bags") {
@@ -32,6 +34,17 @@ class PostRunController : UIViewController{
         }
     }
 
+    @IBAction func Sponsors(sender: AnyObject) {
+        if let url = NSURL(string: "https://www.bloomsdayrun.org/sponsors/bloomsday-sponsors") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+    @IBAction func RacePhotos(sender: AnyObject) {
+        if let url = NSURL(string: "https://www.bloomsdayrun.org/race-photos") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
