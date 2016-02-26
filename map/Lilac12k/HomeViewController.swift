@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  LogMyRun
+//  Lilac12k
 //
 //  Created by Kaitlin Anderson on 2/4/16.
 //  Copyright © 2016 codemysource. All rights reserved.
@@ -8,20 +8,15 @@
 
 import UIKit
 import Foundation
-import Darwin
 class HomeViewController : UIViewController{
 
-    @IBOutlet weak var days: UILabel!
 
-    @IBOutlet weak var hours: UILabel!
-    @IBOutlet weak var minutes: UILabel!
     //@IBOutlet weak var runnerTransmit: UIButton!
     //@IBOutlet weak var runnerTransmit: UISwitch!
-    /*
     @IBOutlet weak var days: UILabel!
     @IBOutlet weak var hours: UILabel!
     @IBOutlet weak var minutes: UILabel!
-*/
+
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var textView: UITextView!
     @IBOutlet var startButton: UIButton!
@@ -39,21 +34,6 @@ class HomeViewController : UIViewController{
         self.tabBarItem = customTabBarItem
 
         super.viewDidLoad()
-        let bloomsdayDate = 1462093200.0
-        let timeLeft = bloomsdayDate - NSDate().timeIntervalSince1970
-        print("Current Timeish: ", NSDate().timeIntervalSince1970)
-        print("timeLeft: ", timeLeft)
-        let daysNum  = Double((ceil( timeLeft / 86400.0)))//43200.0)))
-        print("Days: ", daysNum)
-        days.text = String(Int(daysNum))
-        let hourNum = floor( 23 - ((((timeLeft % 86400.0) / 3600.0) - 8))%24) //Greenwich is 8 hours ahead of us
-        print("Hours: ", hourNum)
-        hours.text = String(Int(hourNum))
-
-        let minNum = floor( ((timeLeft % 3600.0) / 60.0))
-        minutes.text = String(Int(minNum))
-        print("Minutes: ", minNum)
-        
         /*
         let switchDemo=UISwitch(frame:CGRectMake(150, 300, 0, 0));
         switchDemo.on = true
