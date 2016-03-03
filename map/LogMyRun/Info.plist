@@ -24,6 +24,7 @@
                 <key>CFBundleURLSchemes</key>
                 <array>
                     <string>fb1668341133413739</string>
+                    <string>fbauth2</string>
                 </array>
             </dict>
         </array>

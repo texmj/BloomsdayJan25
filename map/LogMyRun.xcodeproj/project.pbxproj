@@ -7,22 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26C3D54E1C8068D500D7EEF3 /* bloomsdaylogo_clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C3D54D1C8068D500D7EEF3 /* bloomsdaylogo_clean.png */; };
 		AF39F0B21C116BA000D7FB3E /* FBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF39F0B11C116BA000D7FB3E /* FBViewController.swift */; };
-		AF4E1E461C802E53002DC084 /* bloomsdaylogo_clean.png in Resources */ = {isa = PBXBuildFile; fileRef = AF4E1E451C802E53002DC084 /* bloomsdaylogo_clean.png */; };
 		AF4E1E481C803890002DC084 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E1E471C803890002DC084 /* TermsOfServiceViewController.swift */; };
 		AF4E1E4E1C803A14002DC084 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4E1E4C1C803A14002DC084 /* Main.storyboard */; };
 		AF4E50B81C1219A4002D5F1C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4E50B51C1219A4002D5F1C /* FBSDKCoreKit.framework */; };
 		AF4E50B91C1219A4002D5F1C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4E50B61C1219A4002D5F1C /* FBSDKLoginKit.framework */; };
 		AF4E50BA1C1219A4002D5F1C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4E50B71C1219A4002D5F1C /* FBSDKShareKit.framework */; };
-		AF5A79CA1C4832AB000D54AA /* Contacts-25.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79C41C4832AB000D54AA /* Contacts-25.png */; };
-		AF5A79CB1C4832AB000D54AA /* facebook-default-no-profile-pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79C51C4832AB000D54AA /* facebook-default-no-profile-pic.jpg */; };
 		AF5A79CC1C4832AB000D54AA /* Geo-fence Filled-25.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79C61C4832AB000D54AA /* Geo-fence Filled-25.png */; };
 		AF5A79CD1C4832AB000D54AA /* Geo-fence-25.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79C71C4832AB000D54AA /* Geo-fence-25.png */; };
 		AF5A79CE1C4832AB000D54AA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79C81C4832AB000D54AA /* logo.png */; };
 		AF5A79CF1C4832AB000D54AA /* Settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79C91C4832AB000D54AA /* Settings-25.png */; };
-		AF5A79D31C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79D01C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg */; };
-		AF5A79D41C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79D11C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg */; };
-		AF5A79D51C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A79D21C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg */; };
 		AFBE6AE41C6AA53E00F862B3 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = AFBE6AE31C6AA53E00F862B3 /* back.png */; };
 		AFF46A0F1C74D66E0048140D /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF46A0E1C74D66E0048140D /* water.png */; };
 		AFF46A111C74D67A0048140D /* track.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF46A101C74D67A0048140D /* track.png */; };
@@ -82,23 +77,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26C3D54D1C8068D500D7EEF3 /* bloomsdaylogo_clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bloomsdaylogo_clean.png; sourceTree = "<group>"; };
 		AF39F0AE1C116A6300D7FB3E /* BloomsdayApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BloomsdayApp-Bridging-Header.h"; path = "../../../Facebook-Integration/BloomsdayApp/BloomsdayApp/BloomsdayApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		AF39F0B11C116BA000D7FB3E /* FBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBViewController.swift; sourceTree = "<group>"; };
-		AF4E1E451C802E53002DC084 /* bloomsdaylogo_clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bloomsdaylogo_clean.png; path = ../../../Downloads/bloomsdaylogo_clean.png; sourceTree = "<group>"; };
 		AF4E1E471C803890002DC084 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		AF4E1E4D1C803A14002DC084 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF4E50B51C1219A4002D5F1C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "FacebookSDKs-iOS-20151111/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		AF4E50B61C1219A4002D5F1C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-20151111/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		AF4E50B71C1219A4002D5F1C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-20151111/FBSDKShareKit.framework"; sourceTree = "<group>"; };
-		AF5A79C41C4832AB000D54AA /* Contacts-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contacts-25.png"; sourceTree = "<group>"; };
-		AF5A79C51C4832AB000D54AA /* facebook-default-no-profile-pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "facebook-default-no-profile-pic.jpg"; sourceTree = "<group>"; };
 		AF5A79C61C4832AB000D54AA /* Geo-fence Filled-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Geo-fence Filled-25.png"; sourceTree = "<group>"; };
 		AF5A79C71C4832AB000D54AA /* Geo-fence-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Geo-fence-25.png"; sourceTree = "<group>"; };
 		AF5A79C81C4832AB000D54AA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		AF5A79C91C4832AB000D54AA /* Settings-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-25.png"; sourceTree = "<group>"; };
-		AF5A79D01C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10582849_10201960976218348_8498841369157223772_o.jpg; sourceTree = "<group>"; };
-		AF5A79D11C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12144659_911516438941943_5495074849430600755_n.jpg; sourceTree = "<group>"; };
-		AF5A79D21C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12299140_10203805097448077_5682606358256141805_n.jpg; sourceTree = "<group>"; };
 		AFBE6AE31C6AA53E00F862B3 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		AFF46A0E1C74D66E0048140D /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 		AFF46A101C74D67A0048140D /* track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track.png; sourceTree = "<group>"; };
@@ -290,17 +280,12 @@
 		CB7340801C1768360066C3EB /* Imaged */ = {
 			isa = PBXGroup;
 			children = (
-				AF5A79C41C4832AB000D54AA /* Contacts-25.png */,
-				AF5A79C51C4832AB000D54AA /* facebook-default-no-profile-pic.jpg */,
 				AF5A79C61C4832AB000D54AA /* Geo-fence Filled-25.png */,
 				AF5A79C71C4832AB000D54AA /* Geo-fence-25.png */,
-				AF4E1E451C802E53002DC084 /* bloomsdaylogo_clean.png */,
+				26C3D54D1C8068D500D7EEF3 /* bloomsdaylogo_clean.png */,
 				AF5A79C81C4832AB000D54AA /* logo.png */,
 				AFBE6AE31C6AA53E00F862B3 /* back.png */,
 				AF5A79C91C4832AB000D54AA /* Settings-25.png */,
-				AF5A79D01C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg */,
-				AF5A79D11C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg */,
-				AF5A79D21C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg */,
 				AFF46A101C74D67A0048140D /* track.png */,
 				AFF46A121C74D6830048140D /* firstaid.png */,
 				AFF46A0E1C74D66E0048140D /* water.png */,
@@ -424,19 +409,14 @@
 			files = (
 				AF5A79CD1C4832AB000D54AA /* Geo-fence-25.png in Resources */,
 				AFF46A111C74D67A0048140D /* track.png in Resources */,
-				AF5A79D41C4832B9000D54AA /* 12144659_911516438941943_5495074849430600755_n.jpg in Resources */,
 				C2ED7D2C1B5A97E8003E9A81 /* LaunchScreen.storyboard in Resources */,
 				AFF46A191C74D6AB0048140D /* MagicMountainAttractions.plist in Resources */,
 				AF5A79CE1C4832AB000D54AA /* logo.png in Resources */,
-				AF4E1E461C802E53002DC084 /* bloomsdaylogo_clean.png in Resources */,
+				26C3D54E1C8068D500D7EEF3 /* bloomsdaylogo_clean.png in Resources */,
 				AF5A79CF1C4832AB000D54AA /* Settings-25.png in Resources */,
 				C2ED7D291B5A97E8003E9A81 /* Assets.xcassets in Resources */,
 				AFBE6AE41C6AA53E00F862B3 /* back.png in Resources */,
 				AF5A79CC1C4832AB000D54AA /* Geo-fence Filled-25.png in Resources */,
-				AF5A79D31C4832B9000D54AA /* 10582849_10201960976218348_8498841369157223772_o.jpg in Resources */,
-				AF5A79CB1C4832AB000D54AA /* facebook-default-no-profile-pic.jpg in Resources */,
-				AF5A79D51C4832B9000D54AA /* 12299140_10203805097448077_5682606358256141805_n.jpg in Resources */,
-				AF5A79CA1C4832AB000D54AA /* Contacts-25.png in Resources */,
 				AFF46A131C74D6830048140D /* firstaid.png in Resources */,
 				AFF46A0F1C74D66E0048140D /* water.png in Resources */,
 				AF4E1E4E1C803A14002DC084 /* Main.storyboard in Resources */,
