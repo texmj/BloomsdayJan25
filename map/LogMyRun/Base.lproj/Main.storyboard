@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="G49-xF-z2q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G49-xF-z2q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -23,12 +23,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
+                                <rect key="frame" x="0.0" y="20" width="320" height="73"/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-ZZ-P4K">
                                 <rect key="frame" x="0.0" y="93" width="320" height="779"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="779" id="0Ua-Vj-Ebn"/>
                                 </constraints>
+                                <button key="tableFooterView" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GCW-Kt-XgL">
+                                    <rect key="frame" x="0.0" y="72" width="320" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.68235294120000001" green="0.36078431370000003" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                    <state key="normal" title="Back">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <segue destination="YCN-eH-mrG" kind="show" id="iNq-Em-ZWB"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RunCell" id="EGt-qe-mwC" customClass="RunPageCell" customModule="LogMyRun" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -115,13 +134,6 @@
                                     <outlet property="delegate" destination="tcr-YF-plX" id="xaZ-xg-Zxh"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Run History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-os-HfR">
-                                <rect key="frame" x="0.0" y="20" width="320" height="73"/>
-                                <color key="backgroundColor" red="0.70980392160000005" green="0.39607843139999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Edp-AC-DXH" firstAttribute="top" secondItem="Llq-0Q-BMo" secondAttribute="top" id="6OM-s7-MvQ"/>
@@ -141,12 +153,12 @@
                     <navigationItem key="navigationItem" id="qI4-mt-qhS"/>
                     <connections>
                         <outlet property="tableView" destination="pLb-ZZ-P4K" id="T0O-Ef-2JB"/>
-                        <segue destination="j9J-U2-zaR" kind="modal" identifier="ShowRunDetail" id="aea-Ao-udj"/>
+                        <segue destination="j9J-U2-zaR" kind="presentation" identifier="ShowRunDetail" id="aea-Ao-udj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zew-1F-xsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-233" y="-2478"/>
+            <point key="canvasLocation" x="-437" y="-2618"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="jKF-jO-gjU">
@@ -190,12 +202,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="loginButton" destination="ATg-Sq-UgY" id="GLs-a9-cmT"/>
-                        <segue destination="YCN-eH-mrG" kind="modal" identifier="HomeSegue" id="fav-gC-Z1s"/>
+                        <segue destination="YCN-eH-mrG" kind="presentation" identifier="HomeSegue" id="fav-gC-Z1s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJt-OY-ov1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="-541"/>
+            <point key="canvasLocation" x="-343.125" y="-571.47887323943655"/>
         </scene>
         <!--Friends-->
         <scene sceneID="dv3-Ru-h2x">
@@ -286,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRV-bh-gvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="615" y="-1166"/>
+            <point key="canvasLocation" x="1153.125" y="-1231.6901408450703"/>
         </scene>
         <!--Finish-->
         <scene sceneID="pbP-nS-73Q">
@@ -433,7 +445,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DK9-92-wbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-218" y="-1581"/>
+            <point key="canvasLocation" x="-408.75" y="-1670.070422535211"/>
         </scene>
         <!--PostRace-->
         <scene sceneID="Bcm-IS-coW">
@@ -462,7 +474,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITk-tE-jok" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190.40000000000001" y="-1429.4666666666667"/>
+            <point key="canvasLocation" x="357" y="-1510"/>
         </scene>
         <!--Map-->
         <scene sceneID="Toy-yV-fR0">
@@ -652,12 +664,12 @@
                         <outlet property="startButton" destination="sig-Sa-fCg" id="fbg-2k-Fvu"/>
                         <outlet property="timeLabel" destination="tpT-Ue-lrO" id="eCh-Vn-O5D"/>
                         <outlet property="transmitButton" destination="gga-Hc-TJH" id="l0b-mT-V1y"/>
-                        <segue destination="j9J-U2-zaR" kind="modal" identifier="ShowRunDetail" id="bJJ-aG-hMy"/>
+                        <segue destination="j9J-U2-zaR" kind="presentation" identifier="ShowRunDetail" id="bJJ-aG-hMy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4zK-r4-pP1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="-1951"/>
+            <point key="canvasLocation" x="1381.875" y="-2060.9154929577462"/>
         </scene>
         <!--Run Detail View Controller-->
         <scene sceneID="OKy-ug-USy">
@@ -771,7 +783,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back.png"/>
                                 <connections>
-                                    <segue destination="YCN-eH-mrG" kind="modal" id="IMy-Qx-YOz"/>
+                                    <segue destination="YCN-eH-mrG" kind="presentation" id="IMy-Qx-YOz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -804,7 +816,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3k6-eL-1xB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162.13333333333333" y="-2295.6666666666665"/>
+            <point key="canvasLocation" x="304" y="-2424.9999999999995"/>
         </scene>
         <!--Home-->
         <scene sceneID="1vS-wc-9DK">
@@ -830,7 +842,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="tcr-YF-plX" kind="modal" id="w7I-dI-YuW"/>
+                                    <segue destination="tcr-YF-plX" kind="presentation" id="w7I-dI-YuW"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="puU-wN-t9f">
@@ -1007,7 +1019,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9M-wt-UXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253" y="-439"/>
+            <point key="canvasLocation" x="474.375" y="-463.73239436619713"/>
         </scene>
         <!--Info-->
         <scene sceneID="Yap-VZ-gMg">
@@ -1279,7 +1291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPK-AU-DGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601" y="-2698"/>
+            <point key="canvasLocation" x="1126.875" y="-2850"/>
         </scene>
         <!--Terms Of Service View Controller-->
         <scene sceneID="myf-xU-A4L">
@@ -1290,11 +1302,11 @@
                         <viewControllerLayoutGuide type="bottom" id="xBm-jg-Mcb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JKB-zh-CXx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGE-IM-3A0">
-                                <rect key="frame" x="58" y="521" width="204" height="27"/>
+                                <rect key="frame" x="198" y="553" width="204" height="27"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="204" id="C0C-EI-jwT"/>
@@ -1309,7 +1321,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="qaL-Be-jq4" kind="modal" id="QAW-1R-TKO"/>
+                                    <segue destination="qaL-Be-jq4" kind="presentation" id="QAW-1R-TKO"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nCm-a6-o13">
@@ -1333,7 +1345,7 @@
                                 </variation>
                             </textView>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uMi-nS-3vC" userLabel="Status Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.60392156860000001" green="0.2470588235" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="D3r-mr-49M"/>
@@ -1359,7 +1371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sM-OV-dVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-938" y="-490"/>
+            <point key="canvasLocation" x="-1758.75" y="-517.6056338028169"/>
         </scene>
     </scenes>
     <resources>
@@ -1372,7 +1384,7 @@
         <image name="mapIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IMy-Qx-YOz"/>
+        <segue reference="iNq-Em-ZWB"/>
         <segue reference="aea-Ao-udj"/>
     </inferredMetricsTieBreakers>
 </document>
