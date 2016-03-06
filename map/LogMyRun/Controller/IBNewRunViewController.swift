@@ -294,6 +294,7 @@ class IBNewRunViewController: UIViewController {
         actionSheetController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
             self.saveRun()
             self.performSegueWithIdentifier("ShowRunDetail", sender: nil)
+            self.stopLocation()
         }))
         
         //Add Discard-Action
@@ -391,7 +392,7 @@ class IBNewRunViewController: UIViewController {
                 
                 //Update distances for everyone else
                 for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
-                    print(UserInformation.sharedInstance.userIDsArray[i], UserInformation.sharedInstance.isUserBeingTrackedArray[i])
+                    //print(UserInformation.sharedInstance.userIDsArray[i], UserInformation.sharedInstance.isUserBeingTrackedArray[i])
                     if self.locations.count > 0 && UserInformation.sharedInstance.isUserBeingTrackedArray[i]
                     {
                         print("HERE for", UserInformation.sharedInstance.userIDsArray[i])

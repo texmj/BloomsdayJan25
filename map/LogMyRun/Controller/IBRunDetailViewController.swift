@@ -22,7 +22,7 @@ class IBRunDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.saveRun(Float(run.distance!), duration: Int(run.duration!), timestamp: run.timestamp!)
+        ///self.saveRun(Float(run.distance!), duration: Int(run.duration!), timestamp: run.timestamp!)
         // Do any additional setup after loading the view.
         configureView()
     }

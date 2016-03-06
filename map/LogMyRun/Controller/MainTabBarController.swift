@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController  {
 
     }
     override func viewDidAppear(animated: Bool) {
-        FacebookImages.sharedInstance
+        //      FacebookImages.sharedInstance
     }
     
     

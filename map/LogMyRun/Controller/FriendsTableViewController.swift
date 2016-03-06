@@ -20,7 +20,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         self.tabBarItem = customTabBarItem
         
         print("View Did Load")
-        FacebookImages.sharedInstance //instantiate??
+        //FacebookImages.sharedInstance //instantiate??
                 self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     

@@ -10,6 +10,7 @@ import Foundation
 
 
 public class UserInformation {
+    var completionHandler:((Float)->Void)!
     public static let sharedInstance = UserInformation()
     ///var picture : UIImage //= "https://graph.facebook.com/USER_ID/picture?width=300&height=300"
     var name : NSString
@@ -22,6 +23,7 @@ public class UserInformation {
     var currentPersonTrackingByIndex : Int //0 is self
     var isUserBeingTrackedArray : [Bool]
     var isRunnerTransmittingData : Bool
+    //var userInfoNotRecievedFlag : Bool
     ///This prevents others from using the default '()' initializer for this class.
     private init()
     {
@@ -35,11 +37,10 @@ public class UserInformation {
         self.isUserBeingTrackedArray = [Bool]()
         self.userIDsArray = [String]()
         self.isRunnerTransmittingData = true
+        //self.userInfoNotRecievedFlag = false
         //self.picture = UIImage(named: "afternoon")!
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            
             if ((error) != nil)
             {
                 // Process error
