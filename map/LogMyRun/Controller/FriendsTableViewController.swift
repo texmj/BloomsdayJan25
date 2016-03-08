@@ -42,7 +42,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
             print("IndexPathRow:" , indexPath.row)
-            cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row-1]]
+            cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row]]
             cell.TrackerSwitch.tag = indexPath.row
             cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
             

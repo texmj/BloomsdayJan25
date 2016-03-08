@@ -35,8 +35,12 @@ public class FacebookImages {
                         guard let data = data where error == nil else { return }
                         ///print(response?.suggestedFilename ?? "")
                         self.profilePic = UIImage(data: data)! //Crashed Here a couple times
+                        self.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[0]] = UIImage(data: data)!
+                        //imageView.layer.cornerRadius = self.profilePic.size.width/2
+                        
                     }
                 }
+            
            // }
         }
         for var i = 0; i < UserInformation.sharedInstance.friendNames.count; i++
@@ -51,7 +55,7 @@ public class FacebookImages {
                     { (data, response, error) in
                         dispatch_async(dispatch_get_main_queue()) { () -> Void in
                             guard let data = data where error == nil else { return }
-                            self.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[x]] = UIImage(data: data)!
+                            self.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[x+1]] = UIImage(data: data)!
                         }
                 }
                 

@@ -150,14 +150,14 @@ class IBNewRunViewController: UIViewController {
     //t
     //    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if (annotation is MKUserLocation) {
-            return nil
-        }
-        else {
+        //if (annotation is MKUserLocation) {
+        //    return nil
+        //}
+        //else {
             let annotationView = AttractionAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
             annotationView.canShowCallout = true
             return annotationView
-        }
+        //}
     }
     //t
     
@@ -210,6 +210,27 @@ class IBNewRunViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         //timer.invalidate()
+    }
+    
+    func userPin(coordinates: CLLocationCoordinate2D, name: String, indexNumber: String) {
+        //let filePath = NSBundle.mainBundle().pathForResource("MagicMountainAttractions", ofType: "plist")
+        //let attractions = NSArray(contentsOfFile: filePath!)
+        //for attraction in attractions! {
+            //let point = CGPointFromString(attraction["location"] as! String)
+            //let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(point.x), CLLocationDegrees(point.y))
+            let title = name
+            let typeRawValue: Int? = Int(4)
+            let type = AttractionType(rawValue: typeRawValue!)!
+            //let subtitle =  indexNumber //attraction["subtitle"] as! String
+            //let annotation = MKAnnotation()
+            print("Index Number: ", indexNumber)
+            let annotation = AttractionAnnotation(coordinate: coordinates, title: title, subtitle: indexNumber, type: type)
+            //let annotationsArray = self.mapView.annotations
+        
+        //mapView.addAnnotations(arrayIncs)
+        ///arrayIncs.removeAll()
+            mapView.addAnnotation(annotation)
+        //}
     }
     
     func buttonClicked(sender:UIButton)
@@ -360,7 +381,7 @@ class IBNewRunViewController: UIViewController {
     //This locationManager helps you find your friends
     //TRY CATCH NEEDED
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        self.mapView.removeAnnotations(self.mapView.annotations)
         for location in locations as [CLLocation] {
             let howRecent = location.timestamp.timeIntervalSinceNow
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
@@ -380,6 +401,23 @@ class IBNewRunViewController: UIViewController {
                     dispatch_async(dispatch_get_main_queue(), {
                         //self.mapView.setRegion(region, animated: true)
                         self.mapView.addOverlay(MKPolyline(coordinates: &userCoords, count: userCoords.count))
+                        /*let pisa = MGLPointAnnotation()
+                        pisa.coordinate = CLLocationCoordinate2DMake(43.72305, 10.396633)
+                        pisa.title = "Leaning Tower of Pisa"
+                        
+                        mapView.addAnnotation(pisa)*/
+                        self.userPin(userCoords.last!, name: "Sarah Prata", indexNumber: String(UserInformation.sharedInstance.token))
+                        
+                        //let userPicture = MKAnnotation
+                        //self.mapView.addAnnotation(annotation: MKAnnotation)
+                        /*
+                        let pinLocation : CLLocationCoordinate2D = userCoords.last!
+                        let objectAnnotation = MKPointAnnotation()
+                        objectAnnotation.coordinate = pinLocation
+                        objectAnnotation.title = "Sarah Prata"
+                        self.mapView.addAnnotation(objectAnnotation)
+                        */
+                        
                     })
                     //transmit data if transmit on
                     if(UserInformation.sharedInstance.isRunnerTransmittingData && isTransmitOn)
@@ -393,6 +431,8 @@ class IBNewRunViewController: UIViewController {
                     //print(UserInformation.sharedInstance.userIDsArray[i], UserInformation.sharedInstance.isUserBeingTrackedArray[i])
                     if self.locations.count > 0 && UserInformation.sharedInstance.isUserBeingTrackedArray[i]
                     {
+                        let x = i
+                        print("X:", x)
                         print("HERE for", UserInformation.sharedInstance.userIDsArray[i])
                         let dispatchGroup = dispatch_group_create()
                         dispatch_group_enter(dispatchGroup) // enter group
@@ -410,6 +450,9 @@ class IBNewRunViewController: UIViewController {
                                     //Required to change the visual within a thread
                                     dispatch_async(dispatch_get_main_queue(), {
                                         self.mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
+                                        let names = UserInformation.sharedInstance.friendNames[x]
+                                        let idNum = String(UserInformation.sharedInstance.userIDsArray[x])
+                                        self.userPin(coords.last!, name: names, indexNumber: idNum)
                                     })
                                     //note after appended!
                                     prevLocation.latitude = lat!
@@ -663,10 +706,10 @@ extension IBNewRunViewController : MKMapViewDelegate {
             return overlayView
         }
         //t
-        
         let polyline = overlay as! MKPolyline
-        
+
         let renderer = MKPolylineRenderer(polyline: polyline)
+
         if currentRunner%5 == 0 {
             renderer.strokeColor = UIColor(red: 250/255, green: 121/255, blue: 33/255, alpha: 1.0)
         }else if currentRunner%5 == 1 {

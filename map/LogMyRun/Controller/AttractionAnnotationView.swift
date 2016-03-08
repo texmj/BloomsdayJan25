@@ -14,13 +14,48 @@ class AttractionAnnotationView: MKAnnotationView {
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         
-        let scale = newWidth / image.size.width
+        /*let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
+        
         UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
         image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage
+        */
+        
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        
+        
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))//imageView.bounds.size)
+        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        let imageView: UIImageView = UIImageView(image: newImage)
+        var layer: CALayer = CALayer()
+        layer = imageView.layer
+        
+        layer.masksToBounds = true
+        layer.cornerRadius = CGFloat(newImage.size.width/2)
+        
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return roundedImage
+        /*
+        let imageView: UIImageView = UIImageView(image: newImage)
+        var layer: CALayer = CALayer()
+        layer = imageView.layer
+        layer.masksToBounds = true
+        layer.cornerRadius = CGFloat(10)//image.size.width/2)
+        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return roundedImage*/
     }
     
     override init(annotation: MKAnnotation!, reuseIdentifier: String!) {
@@ -34,7 +69,8 @@ class AttractionAnnotationView: MKAnnotationView {
         case .AttractionWater:
             image = UIImage(named: "water")
         case .ProfilePicture:
-            image = resizeImage(FacebookImages.sharedInstance.profilePic, newWidth: 45)
+            print(attractionAnnotation.subtitle!);
+            image = resizeImage(FacebookImages.sharedInstance.dictionaryOfProfilePictures[attractionAnnotation.subtitle!]!, newWidth: 30)
         default:
             image = UIImage(named: "star")
         }
