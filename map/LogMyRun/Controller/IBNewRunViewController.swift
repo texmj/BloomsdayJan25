@@ -93,8 +93,6 @@ class IBNewRunViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "mapIcon"), selectedImage: UIImage(named: "mapIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.managedObjectContext = appDel.managedObjectContext

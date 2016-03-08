@@ -16,10 +16,6 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "FriendsIcon"), selectedImage: UIImage(named: "friendsIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
-        
-        print("View Did Load")
         //FacebookImages.sharedInstance //instantiate??
                 self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }

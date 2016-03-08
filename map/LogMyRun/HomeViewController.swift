@@ -37,10 +37,12 @@ class HomeViewController : UIViewController{
         //var imageView: UIImageView!
         timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "update", userInfo: nil, repeats: true)
 
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeImage"), selectedImage: UIImage(named: "homeIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
+        //let customTabBarItem:UITabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeImage"), selectedImage: UIImage(named: "homeIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        /*let customTabBarItem:UITabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon_white"), selectedImage: UIImage(named: "homeImage"))
+        self.tabBarItem = customTabBarItem*/
 
         super.viewDidLoad()
+        
         let bloomsdayDate = 1462093200.0
         let timeLeft = bloomsdayDate - NSDate().timeIntervalSince1970
         let daysNum  = Double((ceil( timeLeft / 86400.0)))//43200.0)))
@@ -50,10 +52,14 @@ class HomeViewController : UIViewController{
 
         let minNum = floor( ((timeLeft % 3600.0) / 60.0))
         minutes.text = formatDate(Int(minNum))
-        let baseHeight = runHistory.frame.origin.y + 200;
-        let scrollWidth = self.viewIfLoaded!.frame.size.width - 20;
+        let baseHeight = runHistory.frame.origin.y + 150;
+        /*if(baseHeight < self.viewIfLoaded!.frame.height )
+        {
+            baseHeight = self.viewIfLoaded!.frame.height
+        }*/
+        //let scrollWidth = self.viewIfLoaded!.frame.size.width - 20;
 
-        scroller.contentSize = CGSizeMake(scrollWidth, baseHeight)//2300
+        scroller.contentSize = CGSizeMake(0, baseHeight)//2300
         
 
         /*

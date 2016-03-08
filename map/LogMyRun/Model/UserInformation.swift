@@ -82,6 +82,8 @@ public class UserInformation {
                 let task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")!) { data, response, error in
                 }
                 task.resume()
+                //SPRATA Double check this is ok here.....
+                FacebookImages.sharedInstance
                 
             }
         })

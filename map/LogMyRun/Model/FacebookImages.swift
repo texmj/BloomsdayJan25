@@ -26,7 +26,7 @@ public class FacebookImages {
         print("Check that this is a correct user token: ", UserInformation.sharedInstance.token);
         if let checkedUrl = NSURL(string: "https://graph.facebook.com/\(UserInformation.sharedInstance.token)/picture?type=large&return_ssl_resources=1") {
             print("Check that this user token is correct now: ", UserInformation.sharedInstance.token);
-            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue.value), 0)){
+            //dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue.value), 0)){
 
                 let imageView = UIImageView()
                 imageView.contentMode = .ScaleAspectFit
@@ -37,7 +37,7 @@ public class FacebookImages {
                         self.profilePic = UIImage(data: data)! //Crashed Here a couple times
                     }
                 }
-            }
+           // }
         }
         for var i = 0; i < UserInformation.sharedInstance.friendNames.count; i++
         {

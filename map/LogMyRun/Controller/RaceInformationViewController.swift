@@ -26,8 +26,7 @@ class RaceInformationViewController : UIViewController{
         super.viewDidLoad()
         print("RaceInfo")
 
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Info", image: UIImage(named: "infoIcon"), selectedImage: UIImage(named: "infoIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
+
     }
     
     

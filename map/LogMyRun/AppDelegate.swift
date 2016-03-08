@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //MainTabBarController tabBarController = (UITabBarController *)self.window.rootViewController;
+        
+
         return true
     }
 
