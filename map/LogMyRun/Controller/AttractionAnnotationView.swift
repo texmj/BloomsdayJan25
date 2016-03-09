@@ -23,7 +23,6 @@ class AttractionAnnotationView: MKAnnotationView {
         UIGraphicsEndImageContext()
         */
         
-        
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
         
@@ -44,7 +43,19 @@ class AttractionAnnotationView: MKAnnotationView {
         let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return roundedImage
+        //now add pin to background
+        let mapPin = UIImage(named: "Map_pin55X75.png")
+        let finalSize = CGSize(width: 55, height: 150)
+        UIGraphicsBeginImageContext(finalSize)
+        
+        //let areaSize = CGRect(x: 0, y: 0, width: finalSize.width, height: finalSize.height)
+        mapPin!.drawInRect(CGRectMake(0, 0, finalSize.width, 75))
+        roundedImage!.drawInRect(CGRectMake(finalSize.width/2-newWidth/2, 8, newWidth, newHeight))//(areaSize)
+        
+        let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return finalImage
         /*
         let imageView: UIImageView = UIImageView(image: newImage)
         var layer: CALayer = CALayer()
@@ -69,8 +80,7 @@ class AttractionAnnotationView: MKAnnotationView {
         case .AttractionWater:
             image = UIImage(named: "water")
         case .ProfilePicture:
-            print(attractionAnnotation.subtitle!);
-            image = resizeImage(FacebookImages.sharedInstance.dictionaryOfProfilePictures[attractionAnnotation.subtitle!]!, newWidth: 30)
+            image = resizeImage(FacebookImages.sharedInstance.dictionaryOfProfilePictures[attractionAnnotation.desc!]!, newWidth: 40)
         default:
             image = UIImage(named: "star")
         }
