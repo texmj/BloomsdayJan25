@@ -1,6 +1,6 @@
 //
 //  Run.swift
-//  Lilac12k
+//  LogMyRun
 //
 
 import Foundation

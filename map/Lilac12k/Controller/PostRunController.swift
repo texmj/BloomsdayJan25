@@ -1,6 +1,6 @@
 //
 //  PostRunController.swift
-//  Lilac12k
+//  LogMyRun
 //
 //  Created by Kaitlin Anderson on 1/28/16.
 //  Copyright © 2016 codemysource. All rights reserved.
@@ -48,8 +48,6 @@ class PostRunController : UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Finish", image: UIImage(named: "flagIcon"), selectedImage: UIImage(named: "flagIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
     }
 
 

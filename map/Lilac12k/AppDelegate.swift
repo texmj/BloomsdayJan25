@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //MainTabBarController tabBarController = (UITabBarController *)self.window.rootViewController;
+        
+
         return true
     }
 
@@ -56,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("Lilac12k", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("LogMyRun", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
 

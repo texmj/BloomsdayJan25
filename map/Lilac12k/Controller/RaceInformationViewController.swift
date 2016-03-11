@@ -1,6 +1,6 @@
 //
 //  RaceInformationViewController.swift
-//  Lilac12k
+//  LogMyRun
 //
 //  Created by Sarah Prata on 2/9/16.
 //  Copyright © 2016 codemysource. All rights reserved.
@@ -24,10 +24,6 @@ class RaceInformationViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("RaceInfo")
-
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Info", image: UIImage(named: "infoIcon"), selectedImage: UIImage(named: "infoIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
     }
     
     

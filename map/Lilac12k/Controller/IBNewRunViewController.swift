@@ -74,7 +74,17 @@ class IBNewRunViewController: UIViewController {
     var centerBound = CLLocationCoordinate2D()
     
     var runners = 0;
+    //var arrayOfRunnerCoordinates : Array<CLLocationCoordinate2D> = []
     var currentRunner = 1;
+    var runnerDictionary = [String: Int]()
+    struct runnerCoordinates {
+        var runnerID : String
+        //var coords : Array<CLLocationCoordinate2D> = []
+        var lastCoordinate : CLLocationCoordinate2D
+    }
+    var arrayOfRunnerCoordinates = [String: runnerCoordinates]()
+
+    
     lazy var locationManager : CLLocationManager = {
         var _locationManager = CLLocationManager()
         _locationManager.delegate = self
@@ -85,7 +95,6 @@ class IBNewRunViewController: UIViewController {
         _locationManager.distanceFilter = 10.0
         
         return _locationManager
-        
     }()
     
     lazy var locations = [CLLocation]()
@@ -93,8 +102,9 @@ class IBNewRunViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "mapIcon"), selectedImage: UIImage(named: "mapIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
+        for var i = 0; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
+            runnerDictionary[UserInformation.sharedInstance.userIDsArray[i]] = Int(i);
+        }
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.managedObjectContext = appDel.managedObjectContext
@@ -146,19 +156,21 @@ class IBNewRunViewController: UIViewController {
         mapView.region = region
         addOverlay()
         addAttractionPins()
+        
         //t
     }
     
     //t
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        if (annotation is MKUserLocation) {
-            return nil
-        }
-        else {
+    //    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        //if (annotation is MKUserLocation) {
+        //    return nil
+        //}
+        //else {
             let annotationView = AttractionAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
             annotationView.canShowCallout = true
             return annotationView
-        }
+        //}
     }
     //t
     
@@ -213,6 +225,16 @@ class IBNewRunViewController: UIViewController {
         //timer.invalidate()
     }
     
+    //sprata: maybe put in core data then call here?
+    func userPin(coordinates: CLLocationCoordinate2D, name: String, indexNumber: String) {
+        let newCoordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
+        let title = name
+        let typeRawValue: Int? = Int(4)
+        let type = AttractionType(rawValue: typeRawValue!)!
+        let annotation = AttractionAnnotation(coordinate: newCoordinate, title: title, desc: indexNumber, type: type)
+        mapView.addAnnotation(annotation)
+    }
+    
     func buttonClicked(sender:UIButton)
     {
         if(sender.titleLabel!.text == "TRANSMIT OFF" || sender.titleLabel!.text == "TRANSMIT ON")
@@ -264,6 +286,7 @@ class IBNewRunViewController: UIViewController {
         seconds = 0.0
         distance = 0.0
         runners = 0
+        
         locations.removeAll(keepCapacity: false)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond:", userInfo: nil, repeats: true)
         //figure out number of runners:
@@ -293,6 +316,7 @@ class IBNewRunViewController: UIViewController {
         actionSheetController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { (actionSheetController) -> Void in
             self.saveRun()
             self.performSegueWithIdentifier("ShowRunDetail", sender: nil)
+            self.stopLocation()
         }))
         
         //Add Discard-Action
@@ -341,11 +365,17 @@ class IBNewRunViewController: UIViewController {
         }
         timeLabel.text =  hoursText + ":" + minutesText + ":" + secondsText
         
-        let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: floor(distance * 100)/100)
+        let milesFromMeters = distance * 0.000621371
+        let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(milesFromMeters * 100)/100)
+        //Good for just meters:
+        //let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: floor(distance * 100)/100)
         distanceLabel.text = distanceQuantity.description
-        
-        let paceUnit = HKUnit.mileUnit().unitDividedByUnit(HKUnit.hourUnit())
-        let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: floor(((distance * 1609.34)/(seconds * 60 * 60))*100)/100)
+        print("Seconds: ", seconds, "Meters: ", distance, "Miles: ", milesFromMeters)
+        let paceUnit = HKUnit.minuteUnit().unitDividedByUnit(HKUnit.mileUnit())
+        let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: floor(((seconds/60.0)/(distance * 0.000621371))*100)/100)
+
+        //Old way, not sure if it works
+        //let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: floor(((distance * 1609.34)/(seconds * 60 * 60))*100)/100)
         paceLabel.text = paceQuantity.description
         
     }
@@ -353,33 +383,31 @@ class IBNewRunViewController: UIViewController {
     
     // MARK: - Start log the run
     //TODO implement flag to check if first coordinate (so it doesn't grab random val from DB)
-    //TODO Stop the app from calling this function when saving the run
     //SPRATA: Added 2 new functions (for get and post calls) that work based on the userID
     //         need to implement them when we have a better handle on testing runners
-    
     //This locationManager helps you find your friends
     //TRY CATCH NEEDED
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        self.mapView.removeAnnotations(self.mapView.annotations)
         for location in locations as [CLLocation] {
             let howRecent = location.timestamp.timeIntervalSinceNow
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
                 var coords = [CLLocationCoordinate2D]()
                 var curLocation = location.coordinate // self.locations.last!.coordinate;
                 var prevLocation = curLocation
-                //update uer distance if selected
+                
+                //update user distance if selected, transmitting data
                 if(self.locations.count > 0 && UserInformation.sharedInstance.isUserBeingTrackedArray[0])
                 {
-                    print("transmitting")
                     distance += location.distanceFromLocation(self.locations.last!)
                     var userCoords = [CLLocationCoordinate2D]()
-                    //userCoords.append(self.locations.last!.coordinate)
                     userCoords.append(location.coordinate)
                     isSmallestOrLargestXorY(location.coordinate)
-                    //let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
                     dispatch_async(dispatch_get_main_queue(), {
                         //self.mapView.setRegion(region, animated: true)
+                        self.currentRunner = self.runnerDictionary[UserInformation.sharedInstance.userIDsArray[0]]!;
                         self.mapView.addOverlay(MKPolyline(coordinates: &userCoords, count: userCoords.count))
+                        self.userPin(userCoords.last!, name: UserInformation.sharedInstance.name as String, indexNumber: String(UserInformation.sharedInstance.token))
                     })
                     //transmit data if transmit on
                     if(UserInformation.sharedInstance.isRunnerTransmittingData && isTransmitOn)
@@ -387,21 +415,19 @@ class IBNewRunViewController: UIViewController {
                         self.sendDistanceInformationToServerWithUserID(curLocation.latitude, lon: curLocation.longitude, userID: UserInformation.sharedInstance.userIDsArray[0])
                     }
                 }
-                
                 //Update distances for everyone else
                 for var i = 1; i < UserInformation.sharedInstance.userIDsArray.count; i++ {
-                    print(UserInformation.sharedInstance.userIDsArray[i], UserInformation.sharedInstance.isUserBeingTrackedArray[i])
                     if self.locations.count > 0 && UserInformation.sharedInstance.isUserBeingTrackedArray[i]
                     {
-                        print("HERE for", UserInformation.sharedInstance.userIDsArray[i])
-                        let dispatchGroup = dispatch_group_create()
-                        dispatch_group_enter(dispatchGroup) // enter group
-                        returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[i], userArrayNumber: i, completionClosure: { (success,lat,lon, userIDSame) -> Void in
+                        let x = i
+                        ///print("HERE for", UserInformation.sharedInstance.friendNames[x-1])
+                        //let dispatchGroup = dispatch_group_create()
+                        //dispatch_group_enter(dispatchGroup) // enter group
+                        returnPreviousLocationFromServerByUserID( UserInformation.sharedInstance.userIDsArray[x], userArrayNumber: x, completionClosure: { (success,lat,lon, userIDSame) -> Void in
                             // When download completes,control flow goes here.
                             if (success != nil) {
                                 if(!self.flagStartLocation){ //make sure not first run
-                                    //var mylocation = [[CLLocation alloc] initWithLatitude:lat! longitude:lon!];
-                                    //self.distance += location.distanceFromLocation(CLLocation(latitude: prevLocation.latitude, longitude: prevLocation.longitude))//self.locations.last!)
+                                    self.arrayOfRunnerCoordinates[userIDSame!] = runnerCoordinates(runnerID: userIDSame!, lastCoordinate: CLLocationCoordinate2DMake(lat!, lon!))
                                     curLocation.latitude = lat!
                                     curLocation.longitude = lon!
                                     //coords.append(prevLocation)
@@ -409,7 +435,12 @@ class IBNewRunViewController: UIViewController {
                                     self.isSmallestOrLargestXorY(CLLocationCoordinate2D(latitude: lat!,longitude: lon!))
                                     //Required to change the visual within a thread
                                     dispatch_async(dispatch_get_main_queue(), {
-                                        self.mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
+                                        self.currentRunner = self.runnerDictionary[userIDSame!]!;
+                                        print("Current Runner:", self.currentRunner)
+                                        var lC = self.arrayOfRunnerCoordinates[userIDSame!]!.lastCoordinate
+                                        self.mapView.addOverlay(MKPolyline(coordinates: &lC, count: 1))
+                                        self.userPin(lC, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
+                                        //self.userPin(coords.last!, name: UserInformation.sharedInstance.friendNames[x-1], indexNumber: userIDSame!)
                                     })
                                     //note after appended!
                                     prevLocation.latitude = lat!
@@ -431,10 +462,10 @@ class IBNewRunViewController: UIViewController {
                                 print("Something went wrong in locationManager()")
                             }
                             //leave group
-                            dispatch_group_leave(dispatchGroup)
+                            //dispatch_group_leave(dispatchGroup)
                         })
                         // this line block while loop until the async task above completed
-                        dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
+                        //dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
                         ///self.mapView.showsUserLocation = true;
                     }
                 }
@@ -464,12 +495,12 @@ class IBNewRunViewController: UIViewController {
     
     
     
-    /*
+    /**
     * Sends runner's location to server by using their user ID. (don't need to use user ID since always same runner, but whatevs. Implemented with a closure
     */
     func sendDistanceInformationToServerWithUserID( lat: Double, lon: Double, userID: String)
     {
-        print("\n\nSending RUNNER INFORMATION")
+       // print("\n\nSending RUNNER INFORMATION")
         let postHeaders = [
             "access-token": UserInformation.sharedInstance.accesstoken as String,
         ]
@@ -491,15 +522,14 @@ class IBNewRunViewController: UIViewController {
                 print(error)
             } else {
                 //let httpResponse = response as? NSHTTPURLResponse
-                //print(httpResponse)
-                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+                //print(NSString(data: data!, encoding: NSUTF8StringEncoding))
             }
         })
         
         dataTask2.resume()
     }
     
-    /*
+    /**
     * Returns runner's previous location from server by using their user ID. Implemented with a closure
     */
     func returnPreviousLocationFromServerByUserID(userID: String, userArrayNumber: Int, completionClosure: (success:Bool?, lat:Double?, lon:Double?, userIDSame:String?) -> Void ) -> (latitude: Double, longitude: Double, userIDSame: String) {
@@ -575,6 +605,9 @@ class IBNewRunViewController: UIViewController {
         return(Double(latFromServer)!, Double(lonFromServer)!, userID)
         
     }
+    /**
+     *Used to center the map by finding the smallest and largest coordinates at each interval
+     */
     
     func isSmallestOrLargestXorY(co : CLLocationCoordinate2D) -> Bool
     {
@@ -663,10 +696,10 @@ extension IBNewRunViewController : MKMapViewDelegate {
             return overlayView
         }
         //t
-        
         let polyline = overlay as! MKPolyline
-        
+
         let renderer = MKPolylineRenderer(polyline: polyline)
+
         if currentRunner%5 == 0 {
             renderer.strokeColor = UIColor(red: 250/255, green: 121/255, blue: 33/255, alpha: 1.0)
         }else if currentRunner%5 == 1 {
@@ -679,12 +712,14 @@ extension IBNewRunViewController : MKMapViewDelegate {
             renderer.strokeColor = UIColor(red: 253/255, green: 231/255, blue: 76/255, alpha: 1.0)
         }
         renderer.lineWidth = 5
+        /*
         if currentRunner < runners {
             currentRunner++;
         }
         else {
             currentRunner = 1;
         }
+        */
         return renderer
     }
 }

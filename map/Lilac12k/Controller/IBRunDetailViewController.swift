@@ -22,7 +22,7 @@ class IBRunDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.saveRun(Float(run.distance!), duration: Int(run.duration!), timestamp: run.timestamp!)
+        ///self.saveRun(Float(run.distance!), duration: Int(run.duration!), timestamp: run.timestamp!)
         // Do any additional setup after loading the view.
         configureView()
     }
@@ -58,8 +58,10 @@ class IBRunDetailViewController: UIViewController {
     func configureView()
     {
         //        mapView.delegate = self
+        let milesFromMeters = (run.distance?.doubleValue)! * 0.000621371
+        let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(milesFromMeters * 100)/100)
         
-        let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: (run.distance?.doubleValue)!)
+        //let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: (run.distance?.doubleValue)!)
         distanceLabel.text = distanceQuantity.description
         
         let dateFormatter = NSDateFormatter()
@@ -69,8 +71,11 @@ class IBRunDetailViewController: UIViewController {
         let secondQuantity = HKQuantity(unit: HKUnit.secondUnit(), doubleValue:(run.duration?.doubleValue)!)
         timeLabel.text = secondQuantity.description
         
-        let paceUnit = HKUnit.secondUnit().unitDividedByUnit(HKUnit.meterUnit())
-        let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: (run.duration?.doubleValue)!/(run.duration?.doubleValue)!)
+        let paceUnit = HKUnit.minuteUnit().unitDividedByUnit(HKUnit.mileUnit())
+        let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: floor((((run.duration?.doubleValue)!/60.0)/((run.distance?.doubleValue)! * 0.000621371))*100)/100)
+        
+        //let paceUnit = HKUnit.secondUnit().unitDividedByUnit(HKUnit.meterUnit())
+        //let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: (run.duration?.doubleValue)!/(run.duration?.doubleValue)!)
         paceLabel.text = paceQuantity.description
         
         loadMap()

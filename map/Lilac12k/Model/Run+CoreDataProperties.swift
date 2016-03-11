@@ -1,6 +1,6 @@
 //
 //  Run+CoreDataProperties.swift
-//  Lilac12k
+//  LogMyRun
 //
 //  Delete this file and regenerate it using "Create NSManagedObject Subclass…"
 //  to keep your implementation up to date with your model.

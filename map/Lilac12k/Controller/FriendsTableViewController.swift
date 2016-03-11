@@ -16,12 +16,15 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "FriendsIcon"), selectedImage: UIImage(named: "friendsIcon_white")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        self.tabBarItem = customTabBarItem
-        
-        print("View Did Load")
-        FacebookImages.sharedInstance //instantiate??
-                self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //FacebookImages.sharedInstance //instantiate??
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tableView.contentSize = ;
+        self.tableView.scrollEnabled = true
+        self.tableView.bounces = true;
+        //self.tableView.frame.size.height = 200;
+        //self.tableView.contentSize = CGSizeMake(0, 800)
+
+        self.view.bringSubviewToFront(tableView)
     }
     
     
@@ -36,7 +39,6 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             cell.TrackerSwitch.tag = 0
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
-            print("IndexPathRow:" , indexPath.row)
             cell.CellImage.image = FacebookImages.sharedInstance.profilePic
             cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
             cell.TrackerSwitch.on = true
@@ -45,8 +47,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             cell.CellName.text = UserInformation.sharedInstance.friendNames[indexPath.row-1] as String
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
-            print("IndexPathRow:" , indexPath.row)
-            cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row-1]]
+            cell.CellImage.image = FacebookImages.sharedInstance.dictionaryOfProfilePictures[UserInformation.sharedInstance.userIDsArray[indexPath.row]]
             cell.TrackerSwitch.tag = indexPath.row
             cell.TrackerSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
             
@@ -79,7 +80,6 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
         //sender.selected=!sender.selected;
         ////UserInformation.sharedInstance.currentPersonTrackingByIndex = indexPath.row
     }
@@ -91,7 +91,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
             }.resume()
     }
     
-    
+    /*
     func downloadImage(url: NSURL, cell : UITableViewCell){
         print("Download Started")
         print("lastPathComponent: " + (url.lastPathComponent ?? ""))
@@ -103,7 +103,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
                 cell.imageView!.image = UIImage(data: data)
             }
         }
-    }
+    }*/
 
     
 }

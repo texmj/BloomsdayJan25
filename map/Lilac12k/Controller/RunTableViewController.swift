@@ -17,16 +17,25 @@ class RunTableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(runs.count)
+        print("Run Counts:", runs.count)
         return runs.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:RunPageCell = (self.tableView.dequeueReusableCellWithIdentifier("RunCell"))! as! RunPageCell
         if runs.isEmpty == false {
+            print("Index Path Row:", indexPath.row)
             let run = runs[indexPath.row]
             //floor(1.5679999 * 1000) / 1000
-            let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(((run.distance?.doubleValue)! / 1609.34)*1000)/1000)
+            
+            let milesFromMeters = (run.distance?.doubleValue)! * 0.000621371
+            let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(milesFromMeters * 100)/100)
+            //Good for just meters:
+            //let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: floor(distance * 100)/100)
+            
+
+            
+            //let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: floor(((run.distance?.doubleValue)! / 1609.34)*1000)/1000)
             cell.CellDistance.text = distanceQuantity.description
             
             let dateFormatter = NSDateFormatter()
@@ -41,7 +50,6 @@ class RunTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
         selectedRun = runs[indexPath.row]
         self.performSegueWithIdentifier("ShowRunDetail", sender: nil)
         //sender.selected=!sender.selected;
@@ -59,11 +67,15 @@ class RunTableViewController: UIViewController, UITableViewDelegate, UITableView
             try managedContext.executeFetchRequest(fetchRequest)
             runs = results as! [Run]
             //runs.sort({ $0.date.compare($1.date) == NSComparisonResult.OrderedAscending })
-            runs = runs.sort({ $0.timestamp!.compare($1.timestamp!) == NSComparisonResult.OrderedAscending })
+            //runs = runs.sort({ $0.timestamp!.compare($1.timestamp!) == NSComparisonResult.OrderedAscending })
+            runs.sortInPlace({ $0.timestamp!.compare($1.timestamp!) == NSComparisonResult.OrderedAscending })
+            //runs.reverse();
             runs = runs.reverse()
+
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

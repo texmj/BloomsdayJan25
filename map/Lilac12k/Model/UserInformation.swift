@@ -10,6 +10,7 @@ import Foundation
 
 
 public class UserInformation {
+    var completionHandler:((Float)->Void)!
     public static let sharedInstance = UserInformation()
     ///var picture : UIImage //= "https://graph.facebook.com/USER_ID/picture?width=300&height=300"
     var name : NSString
@@ -22,6 +23,7 @@ public class UserInformation {
     var currentPersonTrackingByIndex : Int //0 is self
     var isUserBeingTrackedArray : [Bool]
     var isRunnerTransmittingData : Bool
+    //var userInfoNotRecievedFlag : Bool
     ///This prevents others from using the default '()' initializer for this class.
     private init()
     {
@@ -35,11 +37,10 @@ public class UserInformation {
         self.isUserBeingTrackedArray = [Bool]()
         self.userIDsArray = [String]()
         self.isRunnerTransmittingData = true
+        //self.userInfoNotRecievedFlag = false
         //self.picture = UIImage(named: "afternoon")!
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,friends", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            
             if ((error) != nil)
             {
                 // Process error
@@ -53,19 +54,16 @@ public class UserInformation {
                 //let myfriends = result.valueForKey("friends") as! AnyObject
                 //let friendlist: AnyObject = result.valueForKey("friends")! as AnyObject
                 //self.friends = friendlist as! NSString
-                print(self.token);
-                print(self.name);
-                //print(friendlist);
+                //print(self.token, self.name); print("FBACCESSTOKEN:"); print(self.accesstoken);
                 //print(self.friends);
                 self.accesstoken = FBSDKAccessToken.currentAccessToken().tokenString
-                print("FBACCESSTOKEN:")
-                print(self.accesstoken)
+                
                 self.friends = result.valueForKey("friends") as! NSDictionary
                 self.isUserBeingTrackedArray.append(true)
                 self.userIDsArray.append(self.token as String)
                 ///print(self.friends)
                 let data : NSArray = self.friends.objectForKey("data") as! NSArray
-                print(data.count)
+                //print(data.count)
                 for i in 0...data.count-1 {
                     let valueDict : NSDictionary = data[i] as! NSDictionary
                     let id = valueDict.objectForKey("id") as! String
@@ -74,13 +72,15 @@ public class UserInformation {
                     self.friendIDs.append(id)
                     self.isUserBeingTrackedArray.append(false)
                     self.userIDsArray.append(id)
-                    print("the id value is \(id) for \(name)")
+                    //print("the id value is \(id) for \(name)")
                 }
                 
                 let facebookID = self.token
                 let task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")!) { data, response, error in
                 }
                 task.resume()
+                //SPRATA Double check this is ok here.....
+                FacebookImages.sharedInstance
                 
             }
         })

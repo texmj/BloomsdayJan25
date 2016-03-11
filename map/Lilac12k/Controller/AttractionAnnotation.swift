@@ -15,12 +15,23 @@ class AttractionAnnotation: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     var type: AttractionType
+    var desc: String?
     
     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: AttractionType) {
         self.coordinate = coordinate
         self.title = title
-        self.subtitle = subtitle
         self.type = type
-        
+        self.desc = nil
+        self.subtitle = subtitle
+    }
+    init(coordinate: CLLocationCoordinate2D, title: String, desc: String, type: AttractionType) {
+        self.coordinate = coordinate
+        self.title = title
+        self.type = type
+        if(type == AttractionType(rawValue: 4))
+        {
+            self.desc = desc
+        }
+        self.subtitle = nil
     }
 }
